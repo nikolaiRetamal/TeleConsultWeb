@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.dcm4che2</groupId>
+  <artifactId>net</artifactId>
+  <versioning>
+    <release>2.0.26</release>
+    <versions>
+      <version>2.0.26</version>
+    </versions>
+    <lastUpdated>20140812082806</lastUpdated>
+  </versioning>
+</metadata>

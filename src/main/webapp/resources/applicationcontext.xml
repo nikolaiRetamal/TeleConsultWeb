@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context-3.0.xsd
+          http://www.springframework.org/schema/beans">
+          
+<context:component-scan title="http://www.springframework.org/schema/beans/spring-beans-3.0.xsd" 
+						base-package="org.javabahia.cassandra.spring" />
+
+<bean id = "clusterInformation" class="org.easycassandra.persistence.cassandra.ClusterInformation">
+	<property name="keySpace" value="medimage" />
+	<property name="port" value="9042" />
+	<property name="hosts">
+		<list>
+			<value>localhost</value>
+		</list>
+	</property>
+</bean>
+<bean id="cassandraFactory" class="org.easycassandra.persistence.cassandra.spring.CassandraFactoryAnnotation">
+	<constructor-arg name="clusterInformation" value="clusterInformation" />
+	<property name="annotatedClasses">
+		<list>
+			<value>cnam.medimage.bean.Dicom</value>
+			<value>cnam.medimage.bean.TagMesh</value>
+		</list>
+	</property>
+</bean>	
+
+</beans>
+

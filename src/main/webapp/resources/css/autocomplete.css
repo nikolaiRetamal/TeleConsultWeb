@@ -1,0 +1,15 @@
+
+
+.ui-autocomplete { 
+	position: absolute; 
+	background-color:white;
+	cursor: default; 
+	height: 200px; 
+	overflow-y: scroll; 
+	overflow-x: hidden;
+	list-style-type: none;
+}
+.ui-autocomplete-loading {
+    background: white url("../images/ui-anim_basic_16x16.gif") right center no-repeat;
+  }	
+  
