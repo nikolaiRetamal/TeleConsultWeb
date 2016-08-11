@@ -19,7 +19,7 @@ window.onload = function() {
 	
     $( "#tags" ).autocomplete({source: function (request, response) {
         $.ajax({
-            url: "/medimage/getTags",
+            url: "/teleconsult/getTags",
             dataType: "json",	            
             data: {
             	term: request.term
@@ -77,7 +77,7 @@ window.onload = function() {
     });
     $("#usage").autocomplete({source: function (request, response) {
         $.ajax({
-            url: "/medimage/getUsages",
+            url: "/teleconsult/getUsages",
             dataType: "json",	            
             data: {
             	term: request.term
@@ -119,7 +119,7 @@ window.onload = function() {
     });
     $("#metaKey").autocomplete({source: function (request, response) {
         $.ajax({
-            url: "/medimage/getMetadataTags",
+            url: "/teleconsult/getMetadataTags",
             dataType: "json",	            
             data: {
             	term: request.term

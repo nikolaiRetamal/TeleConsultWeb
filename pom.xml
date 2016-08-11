@@ -3,17 +3,18 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>cnam</groupId>
-	<artifactId>medimage</artifactId>
+	<artifactId>teleconsult</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	
-	<name>medimage</name>
+	<name>teleconsult</name>
 	<url>http://maven.apache.org</url>
 
+	
 	<properties>
 		<java.version>1.7</java.version>
-		<spring.version>3.1.0.RELEASE</spring.version>
-		<cglib.version>2.2.2</cglib.version>
+		<spring.version>4.1.6.RELEASE</spring.version>
+		<cglib.version>3.1</cglib.version>
 	</properties>
 
 	<dependencies>
@@ -37,21 +38,6 @@
 			<scope>compile</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<version>${spring.version}</version>
-			<type>jar</type>
-			<scope>test</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-commons-core</artifactId>
-			<version>1.4.1.RELEASE</version>
-		</dependency>
-				
-
 		<!-- CGLib for @Configuration -->
 		<dependency>
 			<groupId>cglib</groupId>
@@ -59,8 +45,7 @@
 			<version>${cglib.version}</version>
 			<scope>runtime</scope>
 		</dependency>
-
-
+		
 		<!-- Servlet Spec -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -69,111 +54,10 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>jsp-api</artifactId>
-			<version>2.1</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.dcm4che2</groupId>
-			<artifactId>core</artifactId>
-			<version>2.0.26</version>
-		</dependency>
-		<dependency>
-			<groupId>org.dcm4che2</groupId>
-			<artifactId>net</artifactId>
-			<version>2.0.26</version>
-		</dependency>
-		<dependency>
-			<groupId>org.dcm4che2</groupId>
-			<artifactId>iod</artifactId>
-			<version>2.0.26</version>
-		</dependency>
-		<dependency>
-			<groupId>org.dcm4che2</groupId>
-			<artifactId>image</artifactId>
-			<version>2.0.26</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.6.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j</artifactId>
-			<version>1.6.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j.impl</groupId>
-			<artifactId>slf4j-log4j</artifactId>
-			<version>1.6.1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.ximpleware</groupId>
-			<artifactId>vtd-wml</artifactId>
-			<version>1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>com.datastax.cassandra</groupId>
-			<artifactId>cassandra-driver-core</artifactId>
-			<version>2.0.1</version>
-		</dependency>
-		
-	    <dependency>
-	        <groupId>org.springframework.data</groupId>
-	        <artifactId>spring-data-cassandra</artifactId>
-	        <version>1.0.2.RELEASE</version>
-	    </dependency>
-	    <dependency>
-		    <groupId>org.springframework.data</groupId>
-		    <artifactId>spring-data-jpa</artifactId>
-		    <version>1.6.2.RELEASE</version>
-		</dependency>
-		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-aop</artifactId>
 		    <version>4.0.6.RELEASE</version>
 		</dependency>
-		<dependency>
-			<groupId>io.netty</groupId>
-			<artifactId>netty</artifactId>
-			<version>3.9.0.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>com.codahale.metrics</groupId>
-			<artifactId>metrics-core</artifactId>
-			<version>3.0.2</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>16.0.1</version>
-		</dependency>
-        <dependency>
-		<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.12</version>
-		</dependency>
-		<dependency>
-		  <groupId>commons-fileupload</groupId>
-		  <artifactId>commons-fileupload</artifactId>
-		  <version>1.2.2</version>
-		</dependency>
-		<dependency>
-		  <groupId>commons-io</groupId>
-		  <artifactId>commons-io</artifactId>
-		  <version>1.4</version>
-		</dependency>
-						
-		<!-- easyCassandra -->
-		<dependency>
-			<groupId>org.easycassandra</groupId>
-			<artifactId>EasyCassandra</artifactId>
-			<version>2.0.2</version>
-		</dependency>		
-		
 		<!--  Google GSON -->
 		<dependency>
 		    <groupId>com.google.code.gson</groupId>
@@ -191,15 +75,62 @@
 			<artifactId>jsp-api</artifactId>
 			<version>2.1</version>
 			<scope>provided</scope>
-		</dependency>
-		<!-- GSON -->
+		</dependency>		
+		 <!-- MySQL database driver -->
+		 <!-- Apache Database Connection Pool -->
 		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>2.3</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.9</version>
+		</dependency>	 
+		<!-- Hibernate framework -->
+
+     <!-- http://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+     <dependency>
+         <groupId>org.hibernate</groupId>
+         <artifactId>hibernate-core</artifactId>
+         <version>5.1.0.Final</version>
+     </dependency>
+
+     <!-- http://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
+     <dependency>
+         <groupId>org.hibernate</groupId>
+         <artifactId>hibernate-entitymanager</artifactId>
+         <version>5.1.0.Final</version>
+     </dependency>
+
+
+     <!-- http://mvnrepository.com/artifact/org.hibernate/hibernate-c3p0 -->
+     <dependency>
+         <groupId>org.hibernate</groupId>
+         <artifactId>hibernate-c3p0</artifactId>
+         <version>5.1.0.Final</version>
+     </dependency>
+
+
+     <!-- MySQL JDBC driver -->
+     <!-- http://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+     <dependency>
+         <groupId>mysql</groupId>
+         <artifactId>mysql-connector-java</artifactId>
+         <version>5.1.34</version>
+     </dependency>
+
+	   
+		<!-- slf4j-log4j -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.1</version>
 		</dependency>
 		
-	
+			
 	</dependencies>
 
 	<repositories>
@@ -208,20 +139,16 @@
 			<name>SpringSource Milestones Proxy</name>
 			<url>https://oss.sonatype.org/content/repositories/springsource-milestones</url>
 		</repository>-->
+    <!--other repositories if any-->
     	<repository>
 	        <id>project.local</id>
 	        <name>project</name>
 	        <url>file:${project.basedir}/lib</url>
     	</repository>
-    <!-- Repository easyCassandra -->
-    	<repository>
-    		<id>easycassandra</id>
-    		<url>http://otaviojava.googlecode.com/svn/repository/</url>
-    	</repository>
 	</repositories>
 
 	<build>
-		<finalName>medimage</finalName>
+		<finalName>teleconsult</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

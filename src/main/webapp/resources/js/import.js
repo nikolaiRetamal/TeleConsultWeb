@@ -7,7 +7,7 @@ window.onload = function() {
 
 	$("#dropzone-form").dropzone({
 		  // The configuration we've talked about above
-		  url:"/medimage/upload",
+		  url:"/teleconsult/upload",
 		  autoProcessQueue: false,
 		  autoDiscover: false,
 		  uploadMultiple: true,
@@ -39,7 +39,7 @@ window.onload = function() {
 					console.log("réponse" + response.id_examen);
 					console.log("réponse" + files);
 					// similar behavior as an HTTP redirect
-					window.location.replace("/medimage/resultat_import?id_examen="+response.id_examen);
+					window.location.replace("/teleconsult/resultat_import?id_examen="+response.id_examen);
 				});
 				this.on("errormultiple", function(files, response) {
 					console.log("error");
@@ -50,7 +50,7 @@ window.onload = function() {
 	$(function() {
 	    $( "#tags" ).autocomplete({source: function (request, response) {
 	        $.ajax({
-	            url: "/medimage/getTags",
+	            url: "/teleconsult/getTags",
 	            dataType: "json",	            
 	            data: {
 	            	term: request.term
@@ -110,7 +110,7 @@ window.onload = function() {
 	
     $("#usage").autocomplete({source: function (request, response) {
         $.ajax({
-            url: "/medimage/getUsages",
+            url: "/teleconsult/getUsages",
             dataType: "json",	            
             data: {
             	term: request.term
