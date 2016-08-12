@@ -1,0 +1,151 @@
+html, body{
+	font-size: 12px;
+	background-color: white;
+}
+#header{
+	width:100%;
+	background:#FF405C;
+	overflow: hidden; /*Empêche height = 0*/
+	padding:5px 0;
+	border-radius: 20px 20px 20px 20px;
+	padding: 20px 26px;
+}
+#header #titre{
+	font-size: 32px;
+	padding-right: 15px;
+}
+.centreV{
+	clear:both;
+	display:block;
+	margin-top: 25px;
+}
+#header img{
+	max-height:30px;
+}
+#header #logo{
+	max-height:120px;
+}
+a{
+	text-decoration:none;
+	outline:none;
+}
+div.action{
+	width:30%;
+	padding:30px;
+	background:#deceb7;
+	margin: 30px auto;
+}
+.action span{
+	font-size:38px;
+	font-weight: 700;
+}
+.action a{
+	text-decoration:none;
+	outline:none;
+	color:#333;
+}
+.action span:hover{
+	color:#fff;
+	cursor: pointer;
+}
+.menu {
+	display:block;
+	margin:0;
+	padding: 0;
+	font-weight:700;
+	font-size:15px;
+	outline:none;
+	text-decoration:none;
+	color: #2bb53b;
+}
+.menu li{
+	display:inline-block;
+	padding:0 35px;
+}
+
+.menu a{
+	font-weight:700;
+	font-size:15px;
+	outline:none;
+	text-decoration:none;
+	color: #2bb53b;
+}
+.menu li:hover > a{
+	color:#fff;
+}
+.titreSection{
+	font-size: 28px;
+	text-align: center;
+}
+
+hr{
+	height: 2px;
+	background:#FF405C;	
+}
+.separateur{
+	width:60%;
+	height: 2px;
+	background:#FF405C;
+}
+.gauche{
+	float:left;
+}
+.droite{
+	float:right;
+}
+.options ul{
+	padding:0;
+}
+li.options{
+	padding:0;
+}
+
+.blocPresentation{
+	overflow:auto;
+	width:100%;
+	clear:both;
+}
+.colonnePresentation{
+	float:left;
+	margin-right:150px;
+}
+.libelle{
+	font-weight:bold;
+	font-size:16px;
+}
+
+table{
+	margin-top:20px;
+}
+
+.logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;	
+    max-height: 300px;
+}
+
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+
+.erreurIdent {	
+	width:90%;
+	background:#FF405C;
+	overflow: hidden; /*Empêche height = 0*/
+	padding:5px 0;
+	border-radius: 20px 20px 20px 20px;
+	padding: 20px 26px;
+	text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;	
+}
+
+.contenu{
+  width: 80%;
+  margin: auto;	
+}

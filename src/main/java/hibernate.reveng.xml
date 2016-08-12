@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="teleconsult" match-name="avis"/>
+  <table-filter match-catalog="teleconsult" match-name="consultation"/>
+  <table-filter match-catalog="teleconsult" match-name="contributeur"/>
+  <table-filter match-catalog="teleconsult" match-name="dmpcadresse"/>
+  <table-filter match-catalog="teleconsult" match-name="dmpcpatient"/>
+  <table-filter match-catalog="teleconsult" match-name="dmpcpersonnelsante"/>
+  <table-filter match-catalog="teleconsult" match-name="dmpcstructuresante"/>
+  <table-filter match-catalog="teleconsult" match-name="dmpcstructuresante_medecin"/>
+  <table-filter match-catalog="teleconsult" match-name="dmpcstructuresante_referent"/>
+  <table-filter match-catalog="teleconsult" match-name="examen"/>
+  <table-filter match-catalog="teleconsult" match-name="resultat"/>
+  <table-filter match-catalog="teleconsult" match-name="specialite"/>
+</hibernate-reverse-engineering>
