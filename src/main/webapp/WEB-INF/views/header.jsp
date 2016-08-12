@@ -25,8 +25,8 @@
 				</c:if>
 				<li class="import">
 					<a href=".">
-						<img alt="rechercher" src="resources/images/loupe.png">
-						<span>Effectuer une recherche</span>
+						<img alt="rechercher" src="resources/images/ic_launcher.png">
+						<span>Accueil </span>
 					</a>
 				</li>
 			</ul> 
@@ -36,20 +36,16 @@
 				<li class="etatConnexion">
 					<c:choose>
 						<c:when test="${empty user}">
-							<span class="connexion">
 								<a href="connexion">
-									<img alt="connexion" src="resources/images/connexion.png">
-									Connexion
+									<img alt="connexion" src="resources/images/connexion.png">									
+									<span class="connexion">Connexion</span>
 								</a>
-							</span>
 						</c:when>
 						<c:otherwise>
-							<span class="deconnexion">
 								<a href="deconnexion">
-									<img alt="deconnexion" src="resources/images/deconnexion.png">
-									Déconnexion
+									<img alt="deconnexion" src="resources/images/deconnexion.png">									
+									<span class="deconnexion"> Déconnexion </span>
 								</a>
-							</span>
 						</c:otherwise>
 					</c:choose>
 				</li>  

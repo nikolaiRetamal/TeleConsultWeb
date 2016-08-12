@@ -20,6 +20,18 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import cnam.teleconsult.modele.bean.Avis;
+import cnam.teleconsult.modele.bean.Consultation;
+import cnam.teleconsult.modele.bean.Contributeur;
+import cnam.teleconsult.modele.bean.ContributeurId;
+import cnam.teleconsult.modele.bean.Dmpcadresse;
+import cnam.teleconsult.modele.bean.Dmpcpatient;
+import cnam.teleconsult.modele.bean.Dmpcpersonnelsante;
+import cnam.teleconsult.modele.bean.Dmpcstructuresante;
+import cnam.teleconsult.modele.bean.Examen;
+import cnam.teleconsult.modele.bean.Resultat;
+import cnam.teleconsult.modele.bean.Specialite;
+
 
 @Configuration
 @ComponentScan(basePackages="cnam.teleconsult")
@@ -66,9 +78,18 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
 	public SessionFactory getSessionFactory(DataSource dataSource) {
 	 
 		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
-	 
-//		sessionBuilder.addAnnotatedClasses(Utilisateur.class);
-//		sessionBuilder.addAnnotatedClasses(Trajet.class);
+
+		sessionBuilder.addAnnotatedClasses(Specialite.class);
+		sessionBuilder.addAnnotatedClasses(Dmpcpersonnelsante.class);
+		sessionBuilder.addAnnotatedClasses(Examen.class);
+		sessionBuilder.addAnnotatedClasses(Dmpcadresse.class);
+		sessionBuilder.addAnnotatedClasses(Dmpcpatient.class);
+		sessionBuilder.addAnnotatedClasses(Consultation.class);
+		sessionBuilder.addAnnotatedClasses(Resultat.class);
+		sessionBuilder.addAnnotatedClasses(Avis.class);
+		sessionBuilder.addAnnotatedClasses(ContributeurId.class);
+		sessionBuilder.addAnnotatedClasses(Contributeur.class);
+		sessionBuilder.addAnnotatedClasses(Dmpcstructuresante.class);
 	 
 		return sessionBuilder.buildSessionFactory();
 	}	

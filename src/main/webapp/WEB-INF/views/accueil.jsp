@@ -11,14 +11,13 @@
 	<!-- Imports CSS -->
 	<link href="resources/bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet" />
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="resources/css/autocomplete.css">
 	<link rel="stylesheet" href="resources/css/teleconsult.css">
 </head>
 <body>
 	<%@ include file="header.jsp" %>
 	<div class="conteneurContenu">
 
-		ACCUEIL	
+		<img class="logo" alt="Logo" src="resources/images/teleconsult_final.png" />	
 
 	</div>
 </body>
