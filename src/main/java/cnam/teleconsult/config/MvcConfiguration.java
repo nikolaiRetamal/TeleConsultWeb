@@ -103,16 +103,5 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
 		return transactionManager;
 	}
 	
-//	@Autowired
-//	@Bean(name = "utilisateurDao")
-//	public UtilisateurDAO getUtilisateurDao(SessionFactory sessionFactory) {
-//		return new UtilisateurDAO(sessionFactory);
-//	}
-//	
-//	@Autowired
-//	@Bean(name = "trajetDao")
-//	public TrajetDAO getTrajetDao(SessionFactory sessionFactory) {
-//		TrajetDAO trajetDao = new TrajetDAO(sessionFactory);
-//		return trajetDao;
-//	}
+
 }
