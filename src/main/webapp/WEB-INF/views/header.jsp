@@ -25,7 +25,7 @@
 					<li class="options">
 						<ul>
 							<li>
-								<a href=".">Configuration du service</a>
+								<a href="configservice">Configuration du service</a>
 							</li>
 							<li>
 								<a href=".">Liste des médecins</a>
