@@ -28,7 +28,7 @@
 								<a href="configservice">Configuration du service</a>
 							</li>
 							<li>
-								<a href=".">Liste des médecins</a>
+								<a href="listemedecin">Liste des médecins</a>
 							</li>
 							<li>
 								<a href=".">Consultations en attente</a>
