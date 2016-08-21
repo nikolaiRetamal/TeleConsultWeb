@@ -1,5 +1,7 @@
 package cnam.teleconsult.controller.controleur;
 
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -125,6 +127,53 @@ public class ConfigServiceContr {
 		return mv;
 	}
 	
+	/*@RequestMapping(value = "/modifier", method = RequestMethod.POST)
+	public ModelAndView modifier(HttpServletRequest request) throws RemoteException, NotBoundException {
+		
+		System.out.print("Modification fiche médecin");
+		
+		Dmpcpersonnelsante personnel = new Dmpcpersonnelsante();
+		
+		//Récupération de l'id
+		Integer id = Integer.parseInt(request.getParameter("id"));
+		System.out.print("id_medecin" + id);
+		
+		//personnel.setID(id);
+		// Modi
+		
+			
+		return model;
+		
+	}*/
+	
+	/**
+	 * Suppression d'un médecin
+	 * @param id
+	 * @return
+	 * @throws RemoteException
+	 * @throws NotBoundException
+	 */
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public ModelAndView delete(@RequestParam ("id") int id) throws RemoteException, NotBoundException {
+	
+		// Suppression du personnel
+		dmpcpersonnelsanteDAO.delete(id);
+		
+		ModelAndView model = new ModelAndView("listMissions");
+		List<Dmpcpersonnelsante> medecin = dmpcpersonnelsanteDAO.list();
+		model.addObject("title", "ListeMedecins");
+		model.addObject("medecin", medecin);
+		
+		return model;
+        
+    }
+	
+	/**
+	 * Valide le mot de passe de l'utilisateur saisi
+	 * @param motDePasse
+	 * @param confirmation
+	 * @throws Exception
+	 */
 	private void validationMotsDePasse( String motDePasse, String confirmation ) throws Exception{
 	    if (motDePasse != null && motDePasse.trim().length() != 0 && confirmation != null && confirmation.trim().length() != 0) {
 	        if (!motDePasse.equals(confirmation)) {
@@ -138,7 +187,9 @@ public class ConfigServiceContr {
 	}
 
 	/**
-	 * Valide le nom d'utilisateur saisi.
+	 * Valide le nom d'utilisateur saisi
+	 * @param nom
+	 * @throws Exception
 	 */
 	private void validationNom( String nom ) throws Exception {
 	    if ( nom != null ) {
@@ -146,12 +197,22 @@ public class ConfigServiceContr {
 	    }
 	}
 	
+	/**
+	 * Valide le prénom de l'utilisateur saisi
+	 * @param nom
+	 * @throws Exception
+	 */
 	private void validationPrenom( String nom ) throws Exception {
 	    if ( nom != null ) {
 	        throw new Exception( "Le prénom de l'utilisateur doit être obligatoirement renseigné" );
 	    }
 	}
 	
+	/**
+	 * Valide le nom d'utilisateur saisi
+	 * @param email
+	 * @throws Exception
+	 */
 	private void validationEmail( String email ) throws Exception {
 	    if ( email != null && email.trim().length() != 0 ) {
 	        if ( !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
@@ -162,6 +223,12 @@ public class ConfigServiceContr {
 	    }
 	}	
 	
+	/**
+	 * Valide les champs telephone, adelie et rpps d'utilisateur saisis
+	 * @param telephone
+	 * @param nb
+	 * @throws Exception
+	 */
 	private void validationNum( String telephone, int nb ) throws Exception {
         if ( telephone != null ) {
             if ( !telephone.matches( "^\\d+$" ) ) {

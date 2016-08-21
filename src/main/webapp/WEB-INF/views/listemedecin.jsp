@@ -26,6 +26,8 @@
 						<th> Spécialité   </th>
 						<th> Rôle   </th>
 						<th> Structure de santé   </th>
+						<th> Consultations   </th>
+						<th> Actions </th>
 					</tr>
 				</thead>
 				<tbody>
@@ -35,7 +37,12 @@
 							<td> ${medecin.prenom} </td>
 							<td> ${medecin.specialite.nom} </td>
 							<td> ${medecin.role} </td>
-							<td> ${medecin.} </td>
+							<td> ${medecin.dmpcstructuresante.nom} </td>
+							<td> </td>
+							<td>
+								<a href="modifier?id=${medecin.id}">Modifier</a>
+								<a href="delete?id=${medecin.id}">Supprimer</a>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
