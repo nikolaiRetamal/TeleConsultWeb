@@ -1,5 +1,5 @@
 package cnam.teleconsult.modele.bean;
-// Generated 12 août 2016 14:40:39 by Hibernate Tools 4.3.1.Final
+// Generated 24 août 2016 08:19:15 by Hibernate Tools 4.3.1.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -46,7 +46,7 @@ public class Resultat implements java.io.Serializable {
 		this.dmpcdocumentId = dmpcdocumentId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CONSULTATION_ID", nullable = false)
 	public Consultation getConsultation() {
 		return this.consultation;
@@ -56,7 +56,7 @@ public class Resultat implements java.io.Serializable {
 		this.consultation = consultation;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "EXAMEN_ID", nullable = false)
 	public Examen getExamen() {
 		return this.examen;

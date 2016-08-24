@@ -59,8 +59,8 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		dataSource.setUrl("jdbc:mysql://localhost:3306/teleconsult");
-		dataSource.setUsername("root");
-		dataSource.setPassword("root");
+		dataSource.setUsername("teleconsult");
+		dataSource.setPassword("teleconsult2016");
 		return dataSource;
 	}
 	
@@ -103,16 +103,6 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
 		return transactionManager;
 	}
 	
-//	@Autowired
-//	@Bean(name = "utilisateurDao")
-//	public UtilisateurDAO getUtilisateurDao(SessionFactory sessionFactory) {
-//		return new UtilisateurDAO(sessionFactory);
-//	}
-//	
-//	@Autowired
-//	@Bean(name = "trajetDao")
-//	public TrajetDAO getTrajetDao(SessionFactory sessionFactory) {
-//		TrajetDAO trajetDao = new TrajetDAO(sessionFactory);
-//		return trajetDao;
-//	}
+	
+
 }

@@ -1,6 +1,7 @@
 package cnam.teleconsult.controller.controleur;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -69,6 +70,17 @@ public class ConnexionContr {
 		
 		System.out.println("login    = " + nom);	
 		System.out.println("password = " + motDePasse);	
+		
+		
+		//Test sur les personnels de l'hôpital Larrey
+		Dmpcstructuresante hopitalLarrey = dmpcstructuresanteDAO.get(1);
+		
+		for(Dmpcpersonnelsante doc:hopitalLarrey.getListeReferent()){
+			
+			System.out.println("Referent ? "+ doc.getPersonnelsanteNom());
+			
+		}
+		
 
 		Map<String, Object> param = new HashMap<>();
 		

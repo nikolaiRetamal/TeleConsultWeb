@@ -1,5 +1,5 @@
 package cnam.teleconsult.modele.bean;
-// Generated 12 août 2016 14:40:39 by Hibernate Tools 4.3.1.Final
+// Generated 24 août 2016 08:19:15 by Hibernate Tools 4.3.1.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -95,7 +95,7 @@ public class Dmpcadresse implements java.io.Serializable {
 		this.adressePays = adressePays;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "dmpcadresse")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "dmpcadresse")
 	public Set<Dmpcpatient> getDmpcpatients() {
 		return this.dmpcpatients;
 	}
@@ -104,7 +104,7 @@ public class Dmpcadresse implements java.io.Serializable {
 		this.dmpcpatients = dmpcpatients;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "dmpcadresse")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "dmpcadresse")
 	public Set<Dmpcstructuresante> getDmpcstructuresantes() {
 		return this.dmpcstructuresantes;
 	}

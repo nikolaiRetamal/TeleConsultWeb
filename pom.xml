@@ -30,6 +30,7 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
@@ -113,15 +114,6 @@
          <version>4.3.2.Final</version>
      </dependency>
 
-
-     <!-- MySQL JDBC driver -->
-     <!-- http://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-     <dependency>
-         <groupId>mysql</groupId>
-         <artifactId>mysql-connector-java</artifactId>
-         <version>5.1.34</version>
-     </dependency>
-
 	   
 		<!-- slf4j-log4j -->
 		<dependency>
@@ -134,11 +126,6 @@
 	</dependencies>
 
 	<repositories>
-		<!--  <repository>
-			<id>springsource-milestones</id>
-			<name>SpringSource Milestones Proxy</name>
-			<url>https://oss.sonatype.org/content/repositories/springsource-milestones</url>
-		</repository>-->
     <!--other repositories if any-->
     	<repository>
 	        <id>project.local</id>

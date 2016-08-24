@@ -1,5 +1,5 @@
 package cnam.teleconsult.modele.bean;
-// Generated 12 août 2016 14:40:39 by Hibernate Tools 4.3.1.Final
+// Generated 24 août 2016 08:19:15 by Hibernate Tools 4.3.1.Final
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -46,7 +46,7 @@ public class Contributeur implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "DMPCSUBMISSION_ID", nullable = false, insertable = false, updatable = false)
 	public Avis getAvis() {
 		return this.avis;
@@ -56,7 +56,7 @@ public class Contributeur implements java.io.Serializable {
 		this.avis = avis;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "PERSONNELSANTE_ID", nullable = false, insertable = false, updatable = false)
 	public Dmpcpersonnelsante getDmpcpersonnelsante() {
 		return this.dmpcpersonnelsante;

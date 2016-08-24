@@ -1,5 +1,5 @@
 package cnam.teleconsult.modele.bean;
-// Generated 12 août 2016 14:40:39 by Hibernate Tools 4.3.1.Final
+// Generated 24 août 2016 08:19:15 by Hibernate Tools 4.3.1.Final
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

@@ -1,5 +1,5 @@
 package cnam.teleconsult.modele.bean;
-// Generated 12 août 2016 14:40:39 by Hibernate Tools 4.3.1.Final
+// Generated 24 août 2016 08:19:15 by Hibernate Tools 4.3.1.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -47,7 +47,7 @@ public class Specialite implements java.io.Serializable {
 		this.specialiteId = specialiteId;
 	}
 
-	@Column(name = "SPECIALITE_NOM", nullable = false, length = 20)
+	@Column(name = "SPECIALITE_NOM", nullable = false, length = 200)
 	public String getSpecialiteNom() {
 		return this.specialiteNom;
 	}
@@ -56,7 +56,7 @@ public class Specialite implements java.io.Serializable {
 		this.specialiteNom = specialiteNom;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "specialite")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "specialite")
 	public Set<Dmpcpersonnelsante> getDmpcpersonnelsantes() {
 		return this.dmpcpersonnelsantes;
 	}
