@@ -16,44 +16,39 @@
 <body>
 	<%@ include file="header.jsp" %>
 	<div class="conteneurContenu">
-				<a href="creermedecin?id=${hopital.structuresanteId}">Ajouter un nouveau médecin</a>
-				
-				<h1 > Liste des médecins </h1>
-				<table id="medecins" >
+								
+				<h1 > Liste des consultations </h1>
+				<table id="consultations" >
 				<thead>
 					<tr>
-						<th> Nom </th>
-						<th> Prénom </th>
-						<th> Spécialité   </th>
-						<th> Rôle   </th>
-						<th> Actions </th>
+						<th> Numéro du dossier </th>
+						<th> Nom du patient </th>
+						<th> Date </th>
+						<th> Médecin   </th>
+						<th> Référent   </th>
+						<th> Statut </th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="listmedecin" items="${listmedecin}">
+					<c:forEach var="consultations" items="${consultations}">
 						<tr >
-							<td> ${listmedecin.personnelsanteNom} </td>
-							<td> ${listmedecin.personnelsantePrenom} </td>
-							<td> ${listmedecin.specialite.specialiteNom} </td>
-							<td> médecin </td>
+							<td> ${consultations.consultationId} </td>
+							<td> ${consultations.dmpcpatient.patientNom} </td>
+							<td> ${consultations.consultationDate} </td>
+							<td> ${consultations.dmpcpatient.dmpcpersonnelsante.personnelsanteNom}</td>
 							<td>
-								<a href="modifier?id=${listmedecin.personnelsanteId}">Modifier /</a>
-								<a href="delete?id=${listmedecin.personnelsanteId}"> Supprimer</a>
+								<select name="listreferent" id="listreferent">
+       							<c:forEach var="listreferent" items="${listreferent}">
+           						<option value="${listreferent.personnelsanteId}">${listreferent.personnelsanteNom}</option>
+           						</c:forEach>
+      							</select>
+							</td>
+							<td>
+								
 							</td>
 						</tr>
 					</c:forEach>
-					<c:forEach var="listreferent" items="${listreferent}">
-						<tr >
-							<td> ${listreferent.personnelsanteNom} </td>
-							<td> ${listreferent.personnelsantePrenom} </td>
-							<td> ${listreferent.specialite.specialiteNom} </td>
-							<td> référent </td>
-							<td>
-								<a href="modifier?id=${listreferent.personnelsanteId}">Modifier /</a>
-								<a href="delete?id=${listreferent.personnelsanteId}"> Supprimer</a>
-							</td>
-						</tr>
-					</c:forEach>
+					
 				</tbody>
 			</table>
 	

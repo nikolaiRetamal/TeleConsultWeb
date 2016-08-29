@@ -41,15 +41,16 @@ public class CreerMedecinContr {
 	 * Formulaire de création d'un médecin
 	 * @param request
 	 * @param response
+	 * @param id
 	 * @return
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/creermedecin", method = RequestMethod.GET)
 	public ModelAndView creerMedecin (HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+			HttpServletResponse response, @RequestParam ("id") int id) throws Exception {
 
 		Map<String, Object> param = new HashMap<>();
-		
+		Dmpcstructuresante hopital = dmpcstructuresanteDAO.get(id);
 		//Liste des specialités
 		List<Specialite> specialite = new ArrayList<Specialite>();
 		specialite = specialiteDAO.list();
@@ -57,7 +58,7 @@ public class CreerMedecinContr {
 		param.put("specialite", specialite);
 		param.put("title", "Creation");
 		param.put("titrePage", "Créer un médecin");
-		
+		param.put("hopital", hopital);
 		ModelAndView mv = new ModelAndView("creermedecin", param);
 		return mv;
 	}

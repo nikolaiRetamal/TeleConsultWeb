@@ -97,8 +97,8 @@
 					<p>
        					<label for="idspecialite">Spécialité : </label><br />
        					<select name="idspecialite" id="idspecialite">
-       					<c:forEach var="idspecialite" items="${specialite}">
-           				<option value="${specialite.id}">${specialite.nom}</option>
+       					<c:forEach var="specialite" items="${specialite}">
+           				<option value="${specialite.specialiteId}">${specialite.specialiteNom}</option>
            				</c:forEach>
       					</select>
    					</p>

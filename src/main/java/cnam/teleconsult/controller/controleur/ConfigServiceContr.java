@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import cnam.teleconsult.modele.bean.Dmpcpersonnelsante;
+import cnam.teleconsult.modele.bean.Dmpcstructuresante;
 import cnam.teleconsult.modele.bean.Specialite;
 import cnam.teleconsult.modele.dao.DmpcpersonnelsanteDAO;
 import cnam.teleconsult.modele.dao.DmpcstructuresanteDAO;
@@ -38,17 +39,20 @@ public class ConfigServiceContr {
 	 * Chargement du formulaire de création d'un service
 	 * @param request
 	 * @param response
+	 * @param id
 	 * @return
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/configservice", method = RequestMethod.GET)
 	public ModelAndView configservice (HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+			HttpServletResponse response, @RequestParam ("id") int id) throws Exception {
 
 		Map<String, Object> param = new HashMap<>();
+		Dmpcstructuresante hopital = dmpcstructuresanteDAO.get(id);
+		
 		param.put("title", "Creation");
 		param.put("titrePage", "Créer un service");
-		
+		param.put("hopital", hopital);
 		
 		ModelAndView mv = new ModelAndView("configservice", param);
 		return mv;
@@ -56,15 +60,25 @@ public class ConfigServiceContr {
 	
 
 	
+	/**
+	 * Validation du formulaire de création d'un service
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value="/controle_configuration", method = RequestMethod.POST)
 	public ModelAndView controleConfigurationService (HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
+		Integer id = Integer.parseInt(request.getParameter("id"));
 		Map<String, Object> param = new HashMap<>();
+		Dmpcstructuresante hopital = dmpcstructuresanteDAO.get(id);
 		
 		param.put("title", "Accueil");
 		param.put("titrePage", "TeleConsult");
-
+		param.put("hopital", hopital);
+		
 		ModelAndView mv = new ModelAndView("accueil");
 		
 		return mv;

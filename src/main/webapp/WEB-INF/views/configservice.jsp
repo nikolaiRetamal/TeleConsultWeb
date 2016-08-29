@@ -27,7 +27,7 @@
 			</h2>
 	
 			<form action="/teleconsult/controle_configuration" method="POST">
-	
+			
 				<fieldset>
 					
 					<p>
@@ -53,7 +53,9 @@
 					<label>   Mensuel  </label><input type="radio" name="type" onclick="toggle_div();" value='mensuel'>
 					</p>
 					
-					
+					<p>
+					<input type="hidden" name="id" value="${hopital.structuresanteId}" />
+					</p>
 										
 					<p>
 						<input type="submit" value="Valider">

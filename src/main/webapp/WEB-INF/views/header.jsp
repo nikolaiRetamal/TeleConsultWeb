@@ -31,7 +31,7 @@
 								<a href="listemedecin?id=${hopital.structuresanteId}">Liste des médecins</a>
 							</li>
 							<li>
-								<a href=".">Consultations en attente</a>
+								<a href="consultations?id=${hopital.structuresanteId}">Consultations</a>
 							</li>
 						</ul>
 					</li>
