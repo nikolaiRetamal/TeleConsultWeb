@@ -25,10 +25,10 @@
 					<li class="options">
 						<ul>
 							<li>
-								<a href="configservice">Configuration du service</a>
+								<a href="configservice?id=${hopital.structuresanteId}">Configuration du service</a>
 							</li>
 							<li>
-								<a href="listemedecin">Liste des médecins</a>
+								<a href="listemedecin?id=${hopital.structuresanteId}">Liste des médecins</a>
 							</li>
 							<li>
 								<a href=".">Consultations en attente</a>

@@ -26,24 +26,10 @@
 				${titrePage}
 			</h2>
 	
-			<form action="/teleconsult/controle_identification" method="POST">
+			<form action="/teleconsult/controle_configuration" method="POST">
 	
 				<fieldset>
 					
-					
-						<c:if test="${not empty erreurIdent}">
-							<p class="erreurIdent">
-									${erreurIdent}
-							</p>
-						</c:if>
-	
-					
-				 	<p>
-						<label for="type"></label>
-					
-					<label> Médecin local  </label> <input type="radio" name="type" onclick="toggle_div('bathymetrie','arrivee');" value='bathymetrie'>
-					<label>   Référent  </label><input type="radio" name="type" onclick="toggle_div('toc','arrivee');" value='toc'>
-					</p>
 					<p>
 						<label for="nom">Nom</label>
 						<span class="requis">*</span>
@@ -51,77 +37,23 @@
 					<p>
 						<input type="text" id="nom" name="nom" placeholder="Nom">
 					</p> 
-					<!-- JS because of IE support; better: placeholder="mail@address.com" -->
 					
 					<p>
-						<label for="prenom">Prénom</label>
+						<label for="type">Type de forfait</label>
 						<span class="requis">*</span>
 					</p>
 					<p>
-						<input type="text" id="prenom" name="prenom" placeholder="Prénom">
+						<input type="text" id="type" name="type" placeholder="Type de forfait">
 					</p>
 					
-					<p>
-						<label for="motDePasse">Mot de passe</label>
-						<span class="requis">*</span>
-					</p>
-					<p>
-						<input type="password" id="motDePasse"
-						placeholder="Mot de passe" name="motDePasse">
-					</p> 
-					<!-- JS because of IE support; better: placeholder="password" -->
-					<p>
-						<label for="confirmation">Confirmation du mot de passe</label>
-						<span class="requis">*</span>
-					</p>
-					<p>
-						<input type="password" id="confirmation"
-						placeholder="Confirmation du Mot de passe" name="confirmation">
+				 	<p>
+						<label for="Prix"></label>
+					
+					<label> Débit  </label> <input type="radio" name="type" onclick="toggle_div();" value='debit'>
+					<label>   Mensuel  </label><input type="radio" name="type" onclick="toggle_div();" value='mensuel'>
 					</p>
 					
-					<p>
-						<label for="email">Email</label>
-						<span class="requis">*</span>
-					</p>
-					<p>
-						<input type="text" id="email" name="email" placeholder="Email" size="20" maxlength="60">
-					</p>
 					
-					<p>
-						<label for="telephone">Téléphone</label>
-					</p>
-					<p>
-						<input type="text" id="telephone" name="telephone" placeholder="Téléphone">
-					</p>
-					
-					<p>
-       					<label for="specialite">Spécialité : </label><br />
-       					<select name=""specialite"" id=""specialite"">
-       					<c:forEach var="specialite" items="${specialite}">
-           				<option value="${specialite.nom}">${specialite.nom}</option>
-           				</c:forEach>
-      					</select>
-   					</p>
-   					
-					<p>
-						<label for="adeli">ADELI</label>
-					</p>
-					<p>
-						<input type="text" id="adeli" name="adeli" placeholder="N° ADELI">
-					</p>
-					<p>
-						<label for="rpps">RPPS</label>
-					</p>
-					<p>
-						<input type="text" id="rpps" name="rpps" placeholder="N° RPPS">
-					</p>
-					
-					<p>
-						<label for="role">Role</label>
-					</p>
-					<p>
-						<input type="text" id="role" name="role" placeholder="Role">
-					</p>
 										
 					<p>
 						<input type="submit" value="Valider">
