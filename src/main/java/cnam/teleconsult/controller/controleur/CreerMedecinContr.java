@@ -109,16 +109,17 @@ public class CreerMedecinContr {
 		
 		System.out.println("Personnel" + personnel.getPersonnelsanteNom() + "enregistrée  ");
 		
-		/*
+		
 		//Ajout du médecin à la structure connectée
-		Dmpcstructuresante hopital = dmpcstructuresanteDAO.get(id);
-
+		Dmpcstructuresante hopital = dmpcstructuresanteDAO.get(1);
+		
+		//"toc".equals(type)
 		if (type == "referent") {
 			hopital.ajouteReferent(personnel);
 		}
 		else {
 			hopital.ajouteMedecin(personnel);
-		}*/
+		}
 			
 			
 		param.put("title", "Accueil");
@@ -205,12 +206,12 @@ public class CreerMedecinContr {
 	private void validationNum( String telephone, int nb ) throws Exception {
         if ( telephone != null ) {
             if ( !telephone.matches( "^\\d+$" ) ) {
-                throw new Exception( "Le numéro de téléphone doit uniquement contenir des chiffres." );
+                throw new Exception( "Le champs doit uniquement contenir des chiffres." );
             } else if ( telephone.length() < nb ) {
-                throw new Exception( "Le numéro de téléphone doit contenir au moins n chiffres." );
+                throw new Exception( "Le champs doit contenir au moins n chiffres." );
             }
         } else {
-            throw new Exception( "Merci d'entrer un numéro de téléphone." );
+            throw new Exception( "Merci d'entrer un numéro " );
         }
     }
 	

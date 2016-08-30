@@ -41,8 +41,8 @@
 				 	<p>
 						<label for="type"></label>
 					
-					<label> Médecin local  </label> <input type="radio" name="type" onclick="toggle_div('bathymetrie','arrivee');" value='bathymetrie'>
-					<label>   Référent  </label><input type="radio" name="type" onclick="toggle_div('toc','arrivee');" value='toc'>
+					<label> Médecin local  </label> <input type="radio" name="type"  value='medecin'>
+					<label>   Référent  </label><input type="radio" name="type"  value='local'>
 					</p>
 					<p>
 						<label for="nom">Nom</label>
@@ -95,13 +95,14 @@
 					</p>
 					
 					<p>
-       					<label for="idspecialite">Spécialité : </label><br />
-       					<select name="idspecialite" id="idspecialite">
-       					<c:forEach var="specialite" items="${specialite}">
-           				<option value="${specialite.specialiteId}">${specialite.specialiteNom}</option>
-           				</c:forEach>
-      					</select>
-   					</p>
+					<label for="idspecialite"> Spécialité: </label>
+					<select name="idspecialite" id= "idspecialite">
+					<c:forEach var="specialite" items="${specialite}"> 
+					<option value=${specialite.specialiteId}"> ${specialite.specialiteNom}</option>
+					</c:forEach>
+					</select>
+					</p>
+					
    					
 					<p>
 						<label for="adeli">ADELI</label>

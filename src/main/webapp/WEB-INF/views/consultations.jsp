@@ -37,12 +37,27 @@
 							<td> ${consultations.consultationDate} </td>
 							<td> ${consultations.dmpcpatient.dmpcpersonnelsante.personnelsanteNom}</td>
 							<td>
-								<select name="listreferent" id="listreferent">
-       							<c:forEach var="listreferent" items="${listreferent}">
-           						<option value="${listreferent.personnelsanteId}">${listreferent.personnelsanteNom}</option>
-           						</c:forEach>
-      							</select>
+								<c:if test="">
+									
+								</c:if>
+								<c:if test="">
+									<select name="listreferent" id="listreferent">
+       									<c:forEach var="listreferent" items="${listreferent}">
+           								<option value="${listreferent.personnelsanteId}">${listreferent.personnelsanteNom}</option>
+           								</c:forEach>
+      								</select>
+								</c:if>
+								
 							</td>
+								<c:if test="">
+									Nouvelle
+								</c:if>
+								<c:if test="">
+									En cours
+								</c:if>
+								<c:if test="">
+									Avisée
+								</c:if>
 							<td>
 								
 							</td>
