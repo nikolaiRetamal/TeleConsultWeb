@@ -47,10 +47,10 @@ public class CreerMedecinContr {
 	 */
 	@RequestMapping(value="/creermedecin", method = RequestMethod.GET)
 	public ModelAndView creerMedecin (HttpServletRequest request,
-			HttpServletResponse response, @RequestParam ("id") int id) throws Exception {
+			HttpServletResponse response) throws Exception {
 
 		Map<String, Object> param = new HashMap<>();
-		Dmpcstructuresante hopital = dmpcstructuresanteDAO.get(id);
+		Dmpcstructuresante hopital = (Dmpcstructuresante)request.getSession().getAttribute("hopital");
 		//Liste des specialités
 		List<Specialite> specialite = new ArrayList<Specialite>();
 		specialite = specialiteDAO.list();
@@ -69,7 +69,7 @@ public class CreerMedecinContr {
 			@RequestParam ("prenom") String prenom, @RequestParam ("motDePasse") String motDePasse,
 			@RequestParam ("confirmation") String confirmation, @RequestParam ("email") String email, 
 			@RequestParam ("adeli") String adeli, @RequestParam ("rpps") String rpps, @RequestParam ("telephone") String telephone, 
-			@RequestParam ("idspecialite") String idspecialite, @RequestParam ("role") String role, @RequestParam ("id") int id) throws Exception {
+			@RequestParam ("idspecialite") String idspecialite, @RequestParam ("role") String role) throws Exception {
 		
 		
 		System.out.println("Entrée dans controle_creationmedecin");
@@ -112,7 +112,7 @@ public class CreerMedecinContr {
 			
 			
 			//Ajout du médecin à la structure connectée
-			Dmpcstructuresante hopital = dmpcstructuresanteDAO.get(id);
+			Dmpcstructuresante hopital = (Dmpcstructuresante)request.getSession().getAttribute("hopital");
 			
 			//"toc".equals(type)
 			if (type == "referent") {
@@ -130,18 +130,8 @@ public class CreerMedecinContr {
 
 		}
 			
-		param.put("title", "Accueil");
-		param.put("titrePage", "TeleConsult");
 
-		ModelAndView mv = new ModelAndView("listemedecin");
-		
-		if(param.containsKey("erreurForm")){
-
-			mv = new ModelAndView("creermedecin");
-		}
-		
-		mv.addAllObjects(param);
-		return mv;
+		return new ModelAndView("redirect:/listemedecin");
 		
 		
 		
@@ -234,15 +224,8 @@ public class CreerMedecinContr {
 	public ModelAndView delete(@RequestParam ("id") int id) throws RemoteException, NotBoundException {
 	
 		// Suppression du personnel
-		dmpcpersonnelsanteDAO.delete(id);
-		
-		ModelAndView model = new ModelAndView("listMissions");
-		List<Dmpcpersonnelsante> medecin = dmpcpersonnelsanteDAO.list();
-		model.addObject("title", "ListeMedecins");
-		model.addObject("medecin", medecin);
-		
-		return model;
-        
+		dmpcpersonnelsanteDAO.delete(id);		
+		return new ModelAndView("redirect:/listemedecin");
     }
 	
 	

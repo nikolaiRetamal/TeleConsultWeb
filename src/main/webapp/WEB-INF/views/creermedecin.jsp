@@ -24,7 +24,7 @@
 		<div id="formulaire">
 	
 	
-			<form action="/teleconsult/controle_creationmedecin?id=${hopital.structuresanteId}" method="POST">
+			<form action="/teleconsult/controle_creationmedecin" method="POST">
 	
 			<h2>	
 				<span class="imageHeader">

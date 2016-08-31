@@ -25,13 +25,13 @@
 					<li class="options">
 						<ul>
 							<li>
-								<a href="configservice?id=${sessionScope.hopital.structuresanteId}">Configuration du service</a>
+								<a href="configservice">Configuration du service</a>
 							</li>
 							<li>
-								<a href="listemedecin?id=${sessionScope.hopital.structuresanteId}">Liste des médecins</a>
+								<a href="listemedecin">Liste des médecins</a>
 							</li>
 							<li>
-								<a href="consultations?id=${sessionScope.hopital.structuresanteId}">Consultations</a>
+								<a href="consultations">Consultations</a>
 							</li>
 						</ul>
 					</li>

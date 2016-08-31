@@ -53,14 +53,14 @@ public class DmpcpersonnelsanteDAO {
 	
 	 @Transactional
 	 public void delete(int id) {
-	     Dmpcpersonnelsante dmpcpersonnelsanteToDelete = new Dmpcpersonnelsante();
-	     dmpcpersonnelsanteToDelete.setPersonnelsanteId(id);
+	     Dmpcpersonnelsante dmpcpersonnelsanteToDelete = get(id);
 	     sessionFactory.getCurrentSession().delete(dmpcpersonnelsanteToDelete);
 	 }
 	
 	 @Transactional
 	 public Dmpcpersonnelsante get(int id) {
-	     String hql = "from dmpcpersonnelsante where personnelsante_id=" + id;
+	     String hql = "from Dmpcpersonnelsante where personnelsante_id=" + id;
+	     
 	     Query query = sessionFactory.getCurrentSession().createQuery(hql);
 	      
 	     @SuppressWarnings("unchecked")

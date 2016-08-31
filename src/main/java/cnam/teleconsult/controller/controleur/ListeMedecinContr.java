@@ -34,10 +34,14 @@ public class ListeMedecinContr {
 	 * @return
 	 */
 	@RequestMapping(value = "/listemedecin", method = RequestMethod.GET)
-	public ModelAndView ListeMedecin(@RequestParam ("id") int id){
+	public ModelAndView ListeMedecin(HttpServletRequest request){
 
 		ModelAndView model = new ModelAndView("listemedecin");
-		Dmpcstructuresante hopital = dmpcstructuresanteDAO.get(id);
+		
+		Dmpcstructuresante hopital = (Dmpcstructuresante)request.getSession().getAttribute("hopital");
+		
+		//On rafraîchit l'objet en session
+		hopital =  dmpcstructuresanteDAO.get(hopital.getStructuresanteId());
 		
 		List<Dmpcpersonnelsante> listmedecin = hopital.getListeMedecin();
 		List<Dmpcpersonnelsante> listreferent = hopital.getListeReferent();

@@ -71,7 +71,7 @@
 						</tbody>
 					</table>
 					<br/>
-					<input type="button"   onClick="window.location.href='creermedecin?id=${hopital.structuresanteId}'" value="Ajouter un nouveau médecin"/>
+					<input type="button"   onClick="window.location.href='creermedecin'" value="Ajouter un nouveau médecin"/>
 				</fieldset>
 			</form>
 		</div>

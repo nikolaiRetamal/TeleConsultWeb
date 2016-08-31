@@ -1,10 +1,6 @@
 package cnam.teleconsult.controller.controleur;
 
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,12 +11,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import cnam.teleconsult.modele.bean.Dmpcpersonnelsante;
 import cnam.teleconsult.modele.bean.Dmpcstructuresante;
-import cnam.teleconsult.modele.bean.Specialite;
 import cnam.teleconsult.modele.dao.DmpcpersonnelsanteDAO;
 import cnam.teleconsult.modele.dao.DmpcstructuresanteDAO;
 
@@ -45,10 +38,10 @@ public class ConfigServiceContr {
 	 */
 	@RequestMapping(value="/configservice", method = RequestMethod.GET)
 	public ModelAndView configservice (HttpServletRequest request,
-			HttpServletResponse response, @RequestParam ("id") int id) throws Exception {
+			HttpServletResponse response) throws Exception {
 
 		Map<String, Object> param = new HashMap<>();
-		Dmpcstructuresante hopital = dmpcstructuresanteDAO.get(id);
+		Dmpcstructuresante hopital = (Dmpcstructuresante)request.getSession().getAttribute("hopital");
 		
 		param.put("title", "Creation");
 		param.put("titrePage", "Créer un service");

@@ -33,10 +33,10 @@ public class ConsultationContr {
 	private ConsultationDAO consultationDAO;
 
 	@RequestMapping(value = "/consultations", method = RequestMethod.GET)
-	public ModelAndView Consultation (@RequestParam ("id") int id){
+	public ModelAndView Consultation (HttpServletRequest request){
 
 		ModelAndView model = new ModelAndView("consultations");
-		Dmpcstructuresante hopital = dmpcstructuresanteDAO.get(id);
+		Dmpcstructuresante hopital = (Dmpcstructuresante)request.getSession().getAttribute("hopital");
 		
 		List<Consultation> consultations= consultationDAO.list();
 		List<Dmpcpersonnelsante> listreferent = hopital.getListeReferent();
