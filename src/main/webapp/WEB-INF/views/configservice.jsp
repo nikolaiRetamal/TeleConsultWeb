@@ -12,21 +12,23 @@
 	<link href="resources/bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet" />
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="resources/css/teleconsult.css">
-	<link rel="stylesheet" href="resources/css/identification.css">
+	<link rel="stylesheet" href="resources/css/formulaire.css">
 	
 </head>
 <body>
 	<%@ include file="header.jsp" %>
 	<div class="conteneurContenu">
 
-		<div id="login">
+		<div id="formulaire">
 	
+			<form action="/teleconsult/controle_configuration" method="POST">
+			
+			
 			<h2>
 				
 				${titrePage}
 			</h2>
 	
-			<form action="/teleconsult/controle_configuration" method="POST">
 			
 				<fieldset>
 					

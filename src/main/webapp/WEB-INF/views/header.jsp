@@ -1,10 +1,10 @@
 	<div id="header" class="">
 		<div class="gauche">
 			<ul class="menu">
-				<c:if test="${not empty referent}">
+				<c:if test="${not empty sessionScope.referent}">
 					<li>
 						<img alt="user" src="resources/images/user.png">
-							<span>${referent.personnelsanteNom}</span>
+							<span>${sessionScope.referent.personnelsanteNom}</span>
 					</li> 
 					<li class="options">
 						<ul>
@@ -17,21 +17,21 @@
 						</ul>
 					</li>
 				</c:if>
-				<c:if test="${not empty hopital}">
+				<c:if test="${not empty sessionScope.hopital}">
 					<li>
 						<img alt="user" src="resources/images/cross.png">
-							<span>${hopital.structuresanteNom}</span>
+							<span>${sessionScope.hopital.structuresanteNom}</span>
 					</li> 
 					<li class="options">
 						<ul>
 							<li>
-								<a href="configservice?id=${hopital.structuresanteId}">Configuration du service</a>
+								<a href="configservice?id=${sessionScope.hopital.structuresanteId}">Configuration du service</a>
 							</li>
 							<li>
-								<a href="listemedecin?id=${hopital.structuresanteId}">Liste des médecins</a>
+								<a href="listemedecin?id=${sessionScope.hopital.structuresanteId}">Liste des médecins</a>
 							</li>
 							<li>
-								<a href="consultations?id=${hopital.structuresanteId}">Consultations</a>
+								<a href="consultations?id=${sessionScope.hopital.structuresanteId}">Consultations</a>
 							</li>
 						</ul>
 					</li>
@@ -48,13 +48,13 @@
 			<ul class="menu">
 				<li class="etatConnexion">
 					<c:choose>
-						<c:when test="${not empty referent}">
+						<c:when test="${not empty sessionScope.referent}">
 								<a href="deconnexion">
 									<img alt="deconnexion" src="resources/images/deconnexion.png">									
 									<span class="deconnexion"> Déconnexion </span>
 								</a>
 						</c:when>
-						<c:when test="${not empty hopital}">
+						<c:when test="${not empty sessionScope.hopital}">
 								<a href="deconnexion">
 									<img alt="deconnexion" src="resources/images/deconnexion.png">									
 									<span class="deconnexion"> Déconnexion </span>

@@ -12,22 +12,27 @@
 	<link href="resources/bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet" />
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="resources/css/teleconsult.css">
-	<link rel="stylesheet" href="resources/css/identification.css">
+	<link rel="stylesheet" href="resources/css/formulaire.css">
 	
 </head>
 <body>
+
 	<%@ include file="header.jsp" %>
+	
 	<div class="conteneurContenu">
 
-		<div id="login">
+		<div id="formulaire">
 	
-			<h2>
-				
-				${titrePage}
-			</h2>
 	
 			<form action="/teleconsult/controle_creationmedecin" method="POST">
 	
+			<h2>	
+				<span class="imageHeader">
+					<img alt="user" src="resources/images/user.png">	
+				</span>		
+				${titrePage}
+			</h2>
+			
 				<fieldset>
 					
 					

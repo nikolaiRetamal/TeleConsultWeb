@@ -49,7 +49,37 @@ public class ConnexionContr {
 		ModelAndView mv = new ModelAndView("connexion", param);
 		return mv;
 	}
+
 	
+	/**
+	 * 
+	 * Servlet de destruction des éléments de connexion
+	 * 
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/deconnexion")
+	public ModelAndView deconnexion(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+
+		//On drop les éléments de connexion en session
+
+		request.getSession().setAttribute("referent", null);
+		request.getSession().setAttribute("hopital", null);
+		
+		
+		Map<String, Object> param = new HashMap<>();
+		
+		
+		param.put("title", "Deconnexion");
+		param.put("titrePage", "Deconnexion");
+		ModelAndView mv = new ModelAndView("accueil", param);
+		return mv;
+	}
+	
+
 
 	/**
 	 * 
@@ -111,15 +141,13 @@ public class ConnexionContr {
 
 					/* On a trouvé un référent, on l'ajoute en session */
 				}else{
-
-					param.put("referent", referent);
+					request.getSession().setAttribute("referent", referent);
 				}
 				
 				
 			/* On a trouvé un hôpital, on l'ajoute en session */
 			}else{
-
-				param.put("hopital", hopital);
+				request.getSession().setAttribute("hopital", hopital);
 			}
 			
 			
