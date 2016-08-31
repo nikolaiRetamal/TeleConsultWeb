@@ -63,11 +63,16 @@ public class CreerMedecinContr {
 		return mv;
 	}
 	
-	@RequestMapping(value="/controle_creationmedecin", method = RequestMethod.POST)
+	@RequestMapping(value="/controle_creationmedecin")
 	public ModelAndView controleCreationMedecin (HttpServletRequest request,
-			HttpServletResponse response, @RequestParam String type, @RequestParam String nom, @RequestParam String prenom, @RequestParam String motDePasse,
-			@RequestParam String confirmation, @RequestParam String email, @RequestParam String adeli, @RequestParam String rpps,
-			@RequestParam String telephone, @RequestParam int idspecialite, @RequestParam String role/*, @RequestParam id*/) throws Exception {
+			HttpServletResponse response, @RequestParam ("type") String  type, @RequestParam ("nom") String nom, 
+			@RequestParam ("prenom") String prenom, @RequestParam ("motDePasse") String motDePasse,
+			@RequestParam ("confirmation") String confirmation, @RequestParam ("email") String email, 
+			@RequestParam ("adeli") String adeli, @RequestParam ("rpps") String rpps, @RequestParam ("telephone") String telephone, 
+			@RequestParam ("idspecialite") String idspecialite, @RequestParam ("role") String role, @RequestParam ("id") int id) throws Exception {
+		
+		
+		System.out.println("Entrée dans controle_creationmedecin");
 		
 		Map<String, Object> param = new HashMap<>();
 		Specialite specialitechoisie = new Specialite();
@@ -87,40 +92,43 @@ public class CreerMedecinContr {
 			validationNum(rpps, 12);
 			validationNum(telephone, 10);
 			
+		
+			
+			personnel.setPersonnelsanteNom(nom);
+			personnel.setPersonnelsantePrenom(prenom);
+			personnel.setPersonnelsanteMdp(motDePasse);
+			personnel.setPersonnelsanteEmail(email);
+			personnel.setPersonnelsanteAdeli(adeli);
+			personnel.setPersonnelsanteRpps(rpps);
+			personnel.setPersonnelsanteTelephone(telephone);
+			personnel.setPersonnelsanteRole(role);
+			
+			specialitechoisie = specialiteDAO.get( new Integer(idspecialite));
+			personnel.setSpecialite(specialitechoisie);
+			
+			dmpcpersonnelsanteDAO.saveOrUpdate(personnel);
+			
+			System.out.println("Personnel " + personnel.getPersonnelsanteNom() + " enregistrée  ");
+			
+			
+			//Ajout du médecin à la structure connectée
+			Dmpcstructuresante hopital = dmpcstructuresanteDAO.get(id);
+			
+			//"toc".equals(type)
+			if (type == "referent") {
+				hopital.ajouteReferent(personnel);
+			}
+			else {
+				hopital.ajouteMedecin(personnel);
+			}
+				
+			dmpcstructuresanteDAO.saveOrUpdate(hopital);
+		
 		} catch (Exception e) {
 
 			param.put("erreurForm", e.getMessage());
 
 		}
-		
-		personnel.setPersonnelsanteNom(nom);
-		personnel.setPersonnelsantePrenom(prenom);
-		personnel.setPersonnelsanteMdp(motDePasse);
-		personnel.setPersonnelsanteEmail(email);
-		personnel.setPersonnelsanteAdeli(adeli);
-		personnel.setPersonnelsanteRpps(rpps);
-		personnel.setPersonnelsanteTelephone(telephone);
-		personnel.setPersonnelsanteRole(role);
-		
-		specialitechoisie = specialiteDAO.get(idspecialite);
-		personnel.setSpecialite(specialitechoisie);
-		
-		dmpcpersonnelsanteDAO.saveOrUpdate(personnel);
-		
-		System.out.println("Personnel" + personnel.getPersonnelsanteNom() + "enregistrée  ");
-		
-		
-		//Ajout du médecin à la structure connectée
-		Dmpcstructuresante hopital = dmpcstructuresanteDAO.get(1);
-		
-		//"toc".equals(type)
-		if (type == "referent") {
-			hopital.ajouteReferent(personnel);
-		}
-		else {
-			hopital.ajouteMedecin(personnel);
-		}
-			
 			
 		param.put("title", "Accueil");
 		param.put("titrePage", "TeleConsult");
@@ -164,7 +172,7 @@ public class CreerMedecinContr {
 	 */
 	 
 	private void validationNom( String nom ) throws Exception {
-	    if ( nom != null ) {
+	    if ( nom == null ) {
 	        throw new Exception( "Le nom d'utilisateur doit être obligatoirement renseigné" );
 	    }
 	}
@@ -176,7 +184,7 @@ public class CreerMedecinContr {
 	 */
 	 
 	private void validationPrenom( String nom ) throws Exception {
-	    if ( nom != null ) {
+	    if ( nom == null ) {
 	        throw new Exception( "Le prénom de l'utilisateur doit être obligatoirement renseigné" );
 	    }
 	}

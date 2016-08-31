@@ -60,7 +60,7 @@ public class SpecialiteDAO {
 	
 	 @Transactional
 	 public Specialite get(int id) {
-	     String hql = "from specialite where specialite_id=" + id;
+	     String hql = "from Specialite where specialite_id=" + id;
 	     Query query = sessionFactory.getCurrentSession().createQuery(hql);
 	      
 	     @SuppressWarnings("unchecked")

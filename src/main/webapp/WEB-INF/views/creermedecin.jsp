@@ -24,7 +24,7 @@
 		<div id="formulaire">
 	
 	
-			<form action="/teleconsult/controle_creationmedecin" method="POST">
+			<form action="/teleconsult/controle_creationmedecin?id=${hopital.structuresanteId}" method="POST">
 	
 			<h2>	
 				<span class="imageHeader">
@@ -46,8 +46,8 @@
 				 	<p>
 						<label for="type"></label>
 					
-					<label> Médecin local  </label> <input type="radio" name="type"  value='medecin'>
-					<label>   Référent  </label><input type="radio" name="type"  value='local'>
+					<label> Médecin local  </label><input type="radio" name="type"  value="medecin">
+					<label>   Référent  </label><input type="radio" name="type"  value="local">
 					</p>
 					<p>
 						<label for="nom">Nom</label>
@@ -102,9 +102,9 @@
 					<p>
 					<label for="idspecialite"> Spécialité: </label>
 					<select name="idspecialite" id= "idspecialite">
-					<c:forEach var="specialite" items="${specialite}"> 
-					<option value=${specialite.specialiteId}"> ${specialite.specialiteNom}</option>
-					</c:forEach>
+						<c:forEach var="specialite" items="${specialite}"> 
+							<option value="${specialite.specialiteId}"> ${specialite.specialiteNom} </option>
+						</c:forEach>
 					</select>
 					</p>
 					
