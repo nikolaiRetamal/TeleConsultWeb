@@ -1,5 +1,5 @@
 package cnam.teleconsult.modele.bean;
-// Generated 24 août 2016 08:19:15 by Hibernate Tools 4.3.1.Final
+// Generated 1 sept. 2016 10:46:59 by Hibernate Tools 4.3.1.Final
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -139,7 +139,11 @@ public class Dmpcstructuresante implements java.io.Serializable {
 	public void setDmpcpersonnelsantes_1(Set<Dmpcpersonnelsante> dmpcpersonnelsantes_1) {
 		this.dmpcpersonnelsantes_1 = dmpcpersonnelsantes_1;
 	}
+
 	
+	
+	
+
 
 
     //Fonctions de surchage afin de clarifier les méthodes automatiquement générées
@@ -194,5 +198,9 @@ public class Dmpcstructuresante implements java.io.Serializable {
 		this.dmpcpersonnelsantes_1.add(referent);
 	}
 	
-
+	
+	
+	
+	
+	
 }

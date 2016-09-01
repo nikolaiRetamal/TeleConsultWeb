@@ -1,5 +1,5 @@
 package cnam.teleconsult.modele.bean;
-// Generated 24 août 2016 08:19:15 by Hibernate Tools 4.3.1.Final
+// Generated 1 sept. 2016 10:46:59 by Hibernate Tools 4.3.1.Final
 
 import java.util.HashSet;
 import java.util.Set;

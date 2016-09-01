@@ -1,5 +1,5 @@
 package cnam.teleconsult.modele.bean;
-// Generated 24 août 2016 08:19:15 by Hibernate Tools 4.3.1.Final
+// Generated 1 sept. 2016 10:46:59 by Hibernate Tools 4.3.1.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -23,7 +23,6 @@ public class Avis implements java.io.Serializable {
 
 	private Integer dmpcsubmissionId;
 	private Consultation consultation;
-	private Dmpcpersonnelsante dmpcpersonnelsante;
 	private String avis;
 	private Integer flagFinal;
 	private Set<Contributeur> contributeurs = new HashSet<Contributeur>(0);
@@ -31,16 +30,13 @@ public class Avis implements java.io.Serializable {
 	public Avis() {
 	}
 
-	public Avis(Consultation consultation, Dmpcpersonnelsante dmpcpersonnelsante, String avis) {
+	public Avis(Consultation consultation, String avis) {
 		this.consultation = consultation;
-		this.dmpcpersonnelsante = dmpcpersonnelsante;
 		this.avis = avis;
 	}
 
-	public Avis(Consultation consultation, Dmpcpersonnelsante dmpcpersonnelsante, String avis, Integer flagFinal,
-			Set<Contributeur> contributeurs) {
+	public Avis(Consultation consultation, String avis, Integer flagFinal, Set<Contributeur> contributeurs) {
 		this.consultation = consultation;
-		this.dmpcpersonnelsante = dmpcpersonnelsante;
 		this.avis = avis;
 		this.flagFinal = flagFinal;
 		this.contributeurs = contributeurs;
@@ -66,16 +62,6 @@ public class Avis implements java.io.Serializable {
 
 	public void setConsultation(Consultation consultation) {
 		this.consultation = consultation;
-	}
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "PERSONNELSANTE_ID", nullable = false)
-	public Dmpcpersonnelsante getDmpcpersonnelsante() {
-		return this.dmpcpersonnelsante;
-	}
-
-	public void setDmpcpersonnelsante(Dmpcpersonnelsante dmpcpersonnelsante) {
-		this.dmpcpersonnelsante = dmpcpersonnelsante;
 	}
 
 	@Column(name = "AVIS", nullable = false, length = 500)

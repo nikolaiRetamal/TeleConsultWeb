@@ -1,7 +1,6 @@
 package cnam.teleconsult.controller.controleur;
 
 
-import java.rmi.RemoteException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import cnam.teleconsult.modele.bean.Consultation;
 import cnam.teleconsult.modele.bean.Dmpcpersonnelsante;
 import cnam.teleconsult.modele.bean.Dmpcstructuresante;
-import cnam.teleconsult.modele.bean.Consultation;
 import cnam.teleconsult.modele.dao.ConsultationDAO;
 import cnam.teleconsult.modele.dao.DmpcpersonnelsanteDAO;
 import cnam.teleconsult.modele.dao.DmpcstructuresanteDAO;
@@ -32,15 +31,61 @@ public class ConsultationContr {
 	@Autowired
 	private ConsultationDAO consultationDAO;
 
+	/**
+	 * 
+	 * Renvoie à la vue de consultation des consultation
+	 * 
+	 * - Dans le cas d'un hôpital on y affecte les référents
+	 * - Dans le cas d'un référent on peut consulter ses consultations et ses demandes d'avis
+	 * 
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "/consultations", method = RequestMethod.GET)
-	public ModelAndView Consultation (HttpServletRequest request){
+	public ModelAndView consultation (HttpServletRequest request){
 
 		ModelAndView model = new ModelAndView("consultations");
 		Dmpcstructuresante hopital = (Dmpcstructuresante)request.getSession().getAttribute("hopital");
 		
-		List<Consultation> consultations= consultationDAO.list();
+		List<Consultation> consultations= consultationDAO.getListeConsultationHopital(hopital.getStructuresanteId()) ;
 		List<Dmpcpersonnelsante> listreferent = hopital.getListeReferent();
+				
+		model.addObject("title", "ListeConsultations");
+		model.addObject("consultations", consultations);
+		model.addObject("listreferent", listreferent);
+		model.addObject("hopital", hopital);
 		
+		return model;
+	}
+	
+	/**
+	 * 
+	 * Servlet de dispatch des référents sur les consultations
+	 * 
+	 * @param request
+	 * @param referentChangement
+	 * @param consultationChangement
+	 * @return
+	 */
+	@RequestMapping(value = "/hopitalModifieConsultation")
+	public ModelAndView hopitalModifieConsultation (HttpServletRequest request, @RequestParam String referentChangement, @RequestParam String consultationChangement){
+
+		ModelAndView model = new ModelAndView("consultations");
+		Dmpcstructuresante hopital = (Dmpcstructuresante)request.getSession().getAttribute("hopital");
+		
+		//On récupère la consultation à dispatcher
+		Consultation consult = consultationDAO.get(new Integer(consultationChangement));
+		
+		//On récupère le référent
+		Dmpcpersonnelsante referent = dmpcpersonnelsanteDAO.get(new Integer(referentChangement));
+		
+		consult.setDmpcpersonnelsante(referent);
+		consultationDAO.saveOrUpdate(consult);
+		
+		
+		List<Consultation> consultations= consultationDAO.getListeConsultationHopital(hopital.getStructuresanteId()) ;
+		List<Dmpcpersonnelsante> listreferent = hopital.getListeReferent();
+				
 		model.addObject("title", "ListeConsultations");
 		model.addObject("consultations", consultations);
 		model.addObject("listreferent", listreferent);

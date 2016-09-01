@@ -97,21 +97,8 @@ public class ConnexionContr {
 	@RequestMapping(value="/controle_identification")
 	public ModelAndView controleIdentification(HttpServletRequest request,
 			HttpServletResponse response, @RequestParam String nom, @RequestParam String motDePasse) throws Exception {
-		
-		System.out.println("login    = " + nom);	
-		System.out.println("password = " + motDePasse);	
-		
-		
-		//Test sur les personnels de l'hôpital Larrey
-		Dmpcstructuresante hopitalLarrey = dmpcstructuresanteDAO.get(1);
-		
-		for(Dmpcpersonnelsante doc:hopitalLarrey.getListeReferent()){
 			
-			System.out.println("Referent ? "+ doc.getPersonnelsanteNom());
-			
-		}
 		
-
 		Map<String, Object> param = new HashMap<>();
 		
 		//

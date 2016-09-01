@@ -1,5 +1,5 @@
 package cnam.teleconsult.modele.bean;
-// Generated 24 août 2016 08:19:15 by Hibernate Tools 4.3.1.Final
+// Generated 1 sept. 2016 10:46:59 by Hibernate Tools 4.3.1.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -36,8 +36,8 @@ public class Dmpcpersonnelsante implements java.io.Serializable {
 	private Set<Dmpcstructuresante> dmpcstructuresantes = new HashSet<Dmpcstructuresante>(0);
 	private Set<Examen> examens = new HashSet<Examen>(0);
 	private Set<Dmpcpatient> dmpcpatients = new HashSet<Dmpcpatient>(0);
+	private Set<Consultation> consultations = new HashSet<Consultation>(0);
 	private Set<Dmpcstructuresante> dmpcstructuresantes_1 = new HashSet<Dmpcstructuresante>(0);
-	private Set<Avis> avises = new HashSet<Avis>(0);
 	private Set<Contributeur> contributeurs = new HashSet<Contributeur>(0);
 
 	public Dmpcpersonnelsante() {
@@ -55,7 +55,8 @@ public class Dmpcpersonnelsante implements java.io.Serializable {
 			String personnelsanteMdp, String personnelsanteEmail, String personnelsanteAdeli, String personnelsanteRpps,
 			String personnelsanteRole, String personnelsanteSecteuractivite, String personnelsanteTelephone,
 			Set<Dmpcstructuresante> dmpcstructuresantes, Set<Examen> examens, Set<Dmpcpatient> dmpcpatients,
-			Set<Dmpcstructuresante> dmpcstructuresantes_1, Set<Avis> avises, Set<Contributeur> contributeurs) {
+			Set<Consultation> consultations, Set<Dmpcstructuresante> dmpcstructuresantes_1,
+			Set<Contributeur> contributeurs) {
 		this.specialite = specialite;
 		this.personnelsanteNom = personnelsanteNom;
 		this.personnelsantePrenom = personnelsantePrenom;
@@ -69,8 +70,8 @@ public class Dmpcpersonnelsante implements java.io.Serializable {
 		this.dmpcstructuresantes = dmpcstructuresantes;
 		this.examens = examens;
 		this.dmpcpatients = dmpcpatients;
+		this.consultations = consultations;
 		this.dmpcstructuresantes_1 = dmpcstructuresantes_1;
-		this.avises = avises;
 		this.contributeurs = contributeurs;
 	}
 
@@ -204,6 +205,15 @@ public class Dmpcpersonnelsante implements java.io.Serializable {
 		this.dmpcpatients = dmpcpatients;
 	}
 
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "dmpcpersonnelsante")
+	public Set<Consultation> getConsultations() {
+		return this.consultations;
+	}
+
+	public void setConsultations(Set<Consultation> consultations) {
+		this.consultations = consultations;
+	}
+
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "dmpcpersonnelsantes")
 	public Set<Dmpcstructuresante> getDmpcstructuresantes_1() {
 		return this.dmpcstructuresantes_1;
@@ -211,15 +221,6 @@ public class Dmpcpersonnelsante implements java.io.Serializable {
 
 	public void setDmpcstructuresantes_1(Set<Dmpcstructuresante> dmpcstructuresantes_1) {
 		this.dmpcstructuresantes_1 = dmpcstructuresantes_1;
-	}
-
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "dmpcpersonnelsante")
-	public Set<Avis> getAvises() {
-		return this.avises;
-	}
-
-	public void setAvises(Set<Avis> avises) {
-		this.avises = avises;
 	}
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "dmpcpersonnelsante")
