@@ -75,8 +75,7 @@
 					           								</option>
 					           								</c:forEach>
 					      								</select>
-													</c:if>
-													
+													</c:if>													
 												</td>
 												<td>
 													<c:if test="${consultations.etatConsultation == 0}">

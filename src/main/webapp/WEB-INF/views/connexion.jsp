@@ -18,55 +18,55 @@
 <body>
 	<%@ include file="header.jsp" %>
 	<div class="conteneurContenu">
-
-		<div id="formulaire">
-	
-			<form action="/teleconsult/controle_identification" method="POST">
-	
-			<h2>
-				<span class="imageHeader">
-					<img alt="verrou" src="resources/images/lock.png">
-				</span>
-				${titrePage}
-			</h2>
-	
-				<fieldset>
-					
-					
-						<c:if test="${not empty erreurIdent}">
-							<p class="erreurIdent">
-									${erreurIdent}
-							</p>
-						</c:if>
-	
-	
-					<p>
-						<label for="user">Identifiant</label>
-					</p>
-					<p>
-						<input type="text" id="nom" name="nom" placeholder="Nom">
-					</p> 
-					<!-- JS because of IE support; better: placeholder="mail@address.com" -->
-	
-					<p>
-						<label for="motDePasse">Mot de passe</label>
-					</p>
-					<p>
-						<input type="password" id="motDePasse"
-						placeholder="Mot de passe" name="motDePasse">
-					</p> 
-					<!-- JS because of IE support; better: placeholder="password" -->
-	
-					<p>
-						<input type="submit" value="Valider">
-					</p>
-	
-				</fieldset>
-	
-			</form>
-	
-		</div> <!-- end login -->
-
+		<div style="margin: 50px auto;width: 400px;">
+			<div id="formulaire">
+		
+				<form action="/teleconsult/controle_identification" method="POST">
+		
+				<h2>
+					<span class="imageHeader">
+						<img alt="verrou" src="resources/images/lock.png">
+					</span>
+					${titrePage}
+				</h2>
+		
+					<fieldset>
+						
+						
+							<c:if test="${not empty erreurIdent}">
+								<p class="erreurIdent">
+										${erreurIdent}
+								</p>
+							</c:if>
+		
+		
+						<p>
+							<label for="user">Identifiant</label>
+						</p>
+						<p>
+							<input type="text" id="nom" name="nom" placeholder="Nom">
+						</p> 
+						<!-- JS because of IE support; better: placeholder="mail@address.com" -->
+		
+						<p>
+							<label for="motDePasse">Mot de passe</label>
+						</p>
+						<p>
+							<input type="password" id="motDePasse"
+							placeholder="Mot de passe" name="motDePasse">
+						</p> 
+						<!-- JS because of IE support; better: placeholder="password" -->
+		
+						<p>
+							<input type="submit" value="Valider">
+						</p>
+		
+					</fieldset>
+		
+				</form>
+		
+			</div> <!-- end login -->
+		</div>
 	</div>
 </body>
 <!-- Imports JS -->

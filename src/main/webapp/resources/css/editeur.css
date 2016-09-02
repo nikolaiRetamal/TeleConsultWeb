@@ -1,0 +1,110 @@
+
+
+/* Styles for image container*/
+
+#imageContainer {
+	border: 2px solid #000;
+    display: inline-block;
+    padding: 5px;
+    vertical-align: top;
+    margin-left: 1%;
+    width: 65.6%;
+}
+
+#imageContainer img {
+	width: 100%;
+}
+
+/* Styles for sliders*/
+
+.sliders {
+	width: -moz-max-content;
+    width: -webkit-max-content;
+    width: -o-max-content; 
+    width: max-content;
+    display: inline-block;
+	border: 2px solid #000;
+	padding-left: 10px;
+}
+
+.sliders p {
+	margin: 18px 0;
+	vertical-align: middle;
+
+}
+
+.sliders label {
+	display: inline-block;
+	margin: 10px 0 0 0;
+	width: 100px;
+	font-size: 1.1rem;
+	color: #22313F;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.sliders input {
+	position: relative;
+	margin: 10px 20px 0 10px;
+	vertical-align: middle;
+}
+
+input[type=range] {
+    /*removes default webkit styles*/
+    -webkit-appearance: none;
+    
+    /*fix for FF unable to apply focus style bug */
+    border-radius: 5px;
+    
+    /*required for proper track sizing in FF*/
+    width: 150px;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 7px;
+    background: #ABB7B7;
+    border: none;
+    border-radius: 3px;
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #4B77BE;
+    margin-top: -6px;
+    vertical-align: middle;
+}
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]:hover {
+	cursor: pointer;
+}
+
+
+#reset {
+	display: inline-block;
+	height: 2.5rem;
+	width: 95%;
+    background-color: #33cc77;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    font-size: 1.5rem;
+    color: #fff;
+    margin: 0 10px 10px 0px;
+    border: 2px solid transparent;
+}
+
+#reset:hover {
+    color: #33cc77;
+    background-color: #fff;
+    border: 2px solid #33cc77;
+}
+
+
+

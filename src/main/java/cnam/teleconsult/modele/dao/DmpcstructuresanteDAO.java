@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import cnam.teleconsult.modele.bean.Consultation;
 import cnam.teleconsult.modele.bean.Dmpcstructuresante;
 
 
@@ -89,4 +90,22 @@ public class DmpcstructuresanteDAO {
          
         return null;
     }
+    
+
+    @Transactional
+    public List<Dmpcstructuresante> getByReferent(int referentId) {
+		 
+	     @SuppressWarnings("unchecked")
+		 List<Dmpcstructuresante> structures = (List<Dmpcstructuresante>)sessionFactory.getCurrentSession().createSQLQuery(
+			        "select s.* from dmpcstructuresante s, dmpcstructuresante_referent r"
+			        + " where s.STRUCTURESANTE_ID = r.STRUCTURESANTE_ID "
+			        + " and   r.PERSONNELSANTE_ID = "+referentId
+			        
+			    )
+			    .addEntity("s", Dmpcstructuresante.class)
+			    .list(); 
+	     	      
+	     return structures;
+    }
+    
 }
