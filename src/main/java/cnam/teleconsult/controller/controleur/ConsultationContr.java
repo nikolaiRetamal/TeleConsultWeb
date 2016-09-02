@@ -20,6 +20,14 @@ import cnam.teleconsult.modele.dao.ConsultationDAO;
 import cnam.teleconsult.modele.dao.DmpcpersonnelsanteDAO;
 import cnam.teleconsult.modele.dao.DmpcstructuresanteDAO;
 
+/**
+ * 
+ * Gestion des consultations 
+ * Parcours des consultations affectées/en attente
+ * 
+ * @author Luana/Jullien
+ *
+ */
 @Controller
 @Scope("session")
 public class ConsultationContr {
@@ -33,7 +41,7 @@ public class ConsultationContr {
 
 	/**
 	 * 
-	 * Renvoie à la vue de consultation des consultation
+	 * Renvoie à la vue de consultation des consultation pour l'utilisateur Hôpital
 	 * 
 	 * - Dans le cas d'un hôpital on y affecte les référents
 	 * - Dans le cas d'un référent on peut consulter ses consultations et ses demandes d'avis
@@ -41,8 +49,8 @@ public class ConsultationContr {
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping(value = "/consultations", method = RequestMethod.GET)
-	public ModelAndView consultation (HttpServletRequest request){
+	@RequestMapping(value = "/hopitalConsultations", method = RequestMethod.GET)
+	public ModelAndView hopitalConsultations (HttpServletRequest request){
 
 		ModelAndView model = new ModelAndView("consultations");
 		Dmpcstructuresante hopital = (Dmpcstructuresante)request.getSession().getAttribute("hopital");
@@ -94,7 +102,33 @@ public class ConsultationContr {
 		return model;
 	}
 	
-	
+	/**
+	 * 
+	 * Renvoie à la vue de consultation du médecin avec toutes ses consultations (Historique)
+	 * 
+	 * - Dans le cas d'un hôpital on y affecte les référents
+	 * - Dans le cas d'un référent on peut consulter ses consultations et ses demandes d'avis
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "/medecinConsultations")
+	public ModelAndView medecinConsultations (HttpServletRequest request, @RequestParam String type){
+
+		ModelAndView model = new ModelAndView("consultations");
+		Dmpcpersonnelsante referent = (Dmpcpersonnelsante)request.getSession().getAttribute("referent");
+		
+		//On vérifie s'il s'agit de remonter toutes les consultations ou seulement les "en cours"
+		Boolean histo = "historique".equals(type);		
+		
+		List<Consultation> consultations= consultationDAO.getListeConsultationReferent(referent.getPersonnelsanteId()) ;
+		model.addObject("consultations", consultations);
+		
+		List<Consultation> avis= consultationDAO.getListeAvisReferent(referent.getPersonnelsanteId()) ;
+		model.addObject("avis", avis);
+		
+		return model;
+	}
 
 	
 }

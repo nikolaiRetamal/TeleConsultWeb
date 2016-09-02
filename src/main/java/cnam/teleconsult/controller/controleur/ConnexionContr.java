@@ -19,6 +19,13 @@ import cnam.teleconsult.modele.bean.Dmpcstructuresante;
 import cnam.teleconsult.modele.dao.DmpcpersonnelsanteDAO;
 import cnam.teleconsult.modele.dao.DmpcstructuresanteDAO;
 
+/**
+ * 
+ * Contrôleur de connexion/déconnexion
+ * 
+ * @author Jullien
+ *
+ */
 @Controller
 @Scope("session")
 public class ConnexionContr {

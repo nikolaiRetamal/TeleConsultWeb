@@ -25,6 +25,14 @@ import cnam.teleconsult.modele.dao.DmpcpersonnelsanteDAO;
 import cnam.teleconsult.modele.dao.DmpcstructuresanteDAO;
 import cnam.teleconsult.modele.dao.SpecialiteDAO;
 
+
+/**
+ * 
+ * Création d'un médecin
+ * 
+ * @author Luana
+ *
+ */
 @Controller
 @Scope("session")
 public class CreerMedecinContr {

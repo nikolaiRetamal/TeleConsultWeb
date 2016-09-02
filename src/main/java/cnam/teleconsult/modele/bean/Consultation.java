@@ -1,6 +1,7 @@
 package cnam.teleconsult.modele.bean;
 // Generated 1 sept. 2016 10:46:59 by Hibernate Tools 4.3.1.Final
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -14,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -117,6 +119,7 @@ public class Consultation implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "consultation")
+	@OrderBy("dmpcdocument_id ASC")
 	public Set<Resultat> getResultats() {
 		return this.resultats;
 	}
@@ -182,5 +185,21 @@ public class Consultation implements java.io.Serializable {
 		
 		return result;
 	}
+	
+	/**
+	 * 
+	 * Renvoie la date de consultation au format : "Day Month YYYY"
+	 * 
+	 * @return
+	 */
+	@Transient
+	public String getConsultationDateLisible(){
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("EEEE dd MMMM yyyy");
+		String dateLisible = sdf.format(getConsultationDate()); 
+		
+		return dateLisible;
+	}
+	
 	
 }

@@ -80,30 +80,6 @@ public class ConsultationDAO {
 
 	 /**
 	  * 
-	  * Renvoie la liste des consultations d'un référent
-	  * Liste des consultations pour lesquelles il est référent principal
-	  * 
-	  * @param referentId
-	  * @return
-	  */
-	 @Transactional
-	 public Consultation getListeConsultationReferent(int referentId) {
-	     String hql = "from Consultation where consultation_id=" + referentId;
-	     Query query = sessionFactory.getCurrentSession().createQuery(hql);
-	      
-	     @SuppressWarnings("unchecked")
-	     List<Consultation> Consultations = (List<Consultation>) query.list();
-	      
-	     if (Consultations != null && !Consultations.isEmpty()) {
-	         return Consultations.get(0);
-	     }
-	      
-	     return null;
-	 }
-		
-
-	 /**
-	  * 
 	  * Renvoie la liste des consultations d'un hopital
 	  * 
 	  * @param referentId
@@ -121,6 +97,56 @@ public class ConsultationDAO {
 			        + " where c.SSN_ID = p.SSN_ID "
 			        + " and   m.PERSONNELSANTE_ID = p.PERSONNELSANTE_ID "
 			        + " and   m.STRUCTURESANTE_ID = "+hopitalId
+			        + " order by c.CONSULTATION_DATE "
+			    )
+			    .addEntity("c", Consultation.class)
+			    .list(); 
+	     	      
+	     return consultations;
+	 }
+	 
+
+	 /**
+	  * 
+	  * Renvoie la liste des consultations d'un referent
+	  * 
+	  * @param referentId
+	  * @return
+	  */
+	 @Transactional
+	 public List<Consultation> getListeConsultationReferent(int referentId) {
+
+		 //Clone du SQL de getListeConsultationHopital
+		 
+	     @SuppressWarnings("unchecked")
+		 List<Consultation> consultations = (List<Consultation>)sessionFactory.getCurrentSession().createSQLQuery(
+			        "select c.* from consultation c"
+			        + " where PERSONNELSANTE_ID = "+referentId
+			        + " order by c.CONSULTATION_DATE "
+			    )
+			    .addEntity("c", Consultation.class)
+			    .list(); 
+	     	      
+	     return consultations;
+	 }
+
+	 /**
+	  * 
+	  * Renvoie la liste des consultations pour lesquelles un contributeur a été sollicité
+	  * 
+	  * @param referentId
+	  * @return
+	  */
+	 @Transactional
+	 public List<Consultation> getListeAvisReferent(int referentId) {
+
+		 //Clone du SQL de getListeConsultationHopital
+		 
+	     @SuppressWarnings("unchecked")
+		 List<Consultation> consultations = (List<Consultation>)sessionFactory.getCurrentSession().createSQLQuery(
+			        "select c.* from consultation c"
+			        + " where CONSULTATION_ID in (select CONSULTATION_ID from avis a, contributeur c  where PERSONNELSANTE_ID = "+referentId
+			        							+ " and a.DMPCSUBMISSION_ID = c.DMPCSUBMISSION_ID	 ) "
 			        + " order by c.CONSULTATION_DATE "
 			    )
 			    .addEntity("c", Consultation.class)

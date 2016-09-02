@@ -9,10 +9,10 @@
 					<li class="options">
 						<ul>
 							<li>
-								<a href=".">Mes consultations</a>
+								<a href="medecinConsultations?type='historique'">Mes consultations</a>
 							</li>
 							<li>
-								<a href=".">Consultations en cours</a>
+								<a href="medecinConsultations?type='enCours'">Consultations en cours</a>
 							</li>
 						</ul>
 					</li>
@@ -31,7 +31,7 @@
 								<a href="listemedecin">Liste des médecins</a>
 							</li>
 							<li>
-								<a href="consultations">Consultations</a>
+								<a href="hopitalConsultations">Consultations</a>
 							</li>
 						</ul>
 					</li>

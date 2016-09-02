@@ -17,6 +17,13 @@ import cnam.teleconsult.modele.bean.Dmpcstructuresante;
 import cnam.teleconsult.modele.dao.DmpcpersonnelsanteDAO;
 import cnam.teleconsult.modele.dao.DmpcstructuresanteDAO;
 
+/**
+ * 
+ * Gestion du service
+ * 
+ * @author Luana
+ *
+ */
 @Controller
 @Scope("session")
 public class ConfigServiceContr {
