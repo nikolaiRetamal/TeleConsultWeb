@@ -30,7 +30,10 @@
 						<form action="." method="POST">
 						
 						
-						<h3>				
+						<h3>		
+							<span class="imageHeader">
+								<img alt="user" src="resources/images/user.png">	
+							</span>				
 							${titrePage}
 						</h3>
 				
@@ -87,7 +90,10 @@
 							----------------- -->
 						<div id="formulaire" align="center">
 								
-							<h3>				
+							<h3>
+							<span class="imageHeader">
+								<img alt="Consult" src="resources/images/cross.png">
+							</span>				
 								${titreResultat}
 							</h3>
 							<fieldset>			
@@ -145,7 +151,10 @@
 					----------------- -->
 					<div id="formulaire">
 										
-						<h3>				
+						<h3>		
+							<span class="imageHeader">
+								<img alt="Consult" src="resources/images/cross.png">
+							</span>		
 							Rédiger un avis
 						</h3>
 							<fieldset>

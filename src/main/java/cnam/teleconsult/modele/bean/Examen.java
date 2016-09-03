@@ -1,5 +1,5 @@
 package cnam.teleconsult.modele.bean;
-// Generated 1 sept. 2016 10:46:59 by Hibernate Tools 4.3.1.Final
+// Generated 3 sept. 2016 15:21:31 by Hibernate Tools 4.3.1.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -62,7 +62,7 @@ public class Examen implements java.io.Serializable {
 		this.dmpcpersonnelsante = dmpcpersonnelsante;
 	}
 
-	@Column(name = "EXAMEN_NOM", nullable = false, length = 20)
+	@Column(name = "EXAMEN_NOM", nullable = false, length = 200)
 	public String getExamenNom() {
 		return this.examenNom;
 	}

@@ -1,5 +1,5 @@
 package cnam.teleconsult.modele.bean;
-// Generated 1 sept. 2016 10:46:59 by Hibernate Tools 4.3.1.Final
+// Generated 3 sept. 2016 15:21:31 by Hibernate Tools 4.3.1.Final
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -119,7 +119,7 @@ public class Consultation implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "consultation")
-	@OrderBy("dmpcdocument_id ASC")
+	@OrderBy("DMPCDOCUMENT_ID ASC")
 	public Set<Resultat> getResultats() {
 		return this.resultats;
 	}

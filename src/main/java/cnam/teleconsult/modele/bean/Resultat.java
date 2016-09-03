@@ -1,5 +1,5 @@
 package cnam.teleconsult.modele.bean;
-// Generated 1 sept. 2016 10:46:59 by Hibernate Tools 4.3.1.Final
+// Generated 3 sept. 2016 15:21:31 by Hibernate Tools 4.3.1.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,6 +23,7 @@ public class Resultat implements java.io.Serializable {
 	private Examen examen;
 	private String imageNom;
 	private String imagePath;
+	private String rawData;
 
 	public Resultat() {
 	}
@@ -32,6 +33,14 @@ public class Resultat implements java.io.Serializable {
 		this.examen = examen;
 		this.imageNom = imageNom;
 		this.imagePath = imagePath;
+	}
+
+	public Resultat(Consultation consultation, Examen examen, String imageNom, String imagePath, String rawData) {
+		this.consultation = consultation;
+		this.examen = examen;
+		this.imageNom = imageNom;
+		this.imagePath = imagePath;
+		this.rawData = rawData;
 	}
 
 	@Id
@@ -82,6 +91,15 @@ public class Resultat implements java.io.Serializable {
 
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
+	}
+
+	@Column(name = "RAW_DATA", length = 250)
+	public String getRawData() {
+		return this.rawData;
+	}
+
+	public void setRawData(String rawData) {
+		this.rawData = rawData;
 	}
 
 }

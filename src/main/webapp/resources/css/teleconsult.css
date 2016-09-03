@@ -4,7 +4,7 @@ html, body{
 }
 #header{
 	width:100%;
-	background:#FF405C;
+	background:#2bb53b;
 	overflow: hidden; /*Empêche height = 0*/
 	padding:5px 0;
 	border-radius: 20px 20px 20px 20px;
@@ -56,7 +56,7 @@ div.action{
 	font-size:15px;
 	outline:none;
 	text-decoration:none;
-	color: #2bb53b;
+	color: white;
 }
 .menu li{
 	display:inline-block;
@@ -68,10 +68,10 @@ div.action{
 	font-size:15px;
 	outline:none;
 	text-decoration:none;
-	color: #2bb53b;
+	color: white;
 }
 .menu li:hover > a{
-	color:#fff;
+	color:white;
 }
 .titreSection{
 	font-size: 28px;
@@ -80,12 +80,12 @@ div.action{
 
 hr{
 	height: 2px;
-	background:#FF405C;	
+	background:#2bb53b;	
 }
 .separateur{
 	width:60%;
 	height: 2px;
-	background:#FF405C;
+	background:#2bb53b;
 }
 .gauche{
 	float:left;
@@ -134,7 +134,7 @@ table{
 
 .erreurIdent {	
 	width:90%;
-	background:#FF405C;
+	background:#2bb53b;
 	overflow: hidden; /*Empêche height = 0*/
 	padding:5px 0;
 	border-radius: 20px 20px 20px 20px;

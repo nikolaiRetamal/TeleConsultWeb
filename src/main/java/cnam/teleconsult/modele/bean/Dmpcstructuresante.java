@@ -1,5 +1,5 @@
 package cnam.teleconsult.modele.bean;
-// Generated 1 sept. 2016 10:46:59 by Hibernate Tools 4.3.1.Final
+// Generated 3 sept. 2016 15:21:31 by Hibernate Tools 4.3.1.Final
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -121,6 +121,7 @@ public class Dmpcstructuresante implements java.io.Serializable {
 	@JoinTable(name = "dmpcstructuresante_medecin", catalog = "teleconsult", joinColumns = {
 			@JoinColumn(name = "STRUCTURESANTE_ID", nullable = false, updatable = false) }, inverseJoinColumns = {
 					@JoinColumn(name = "PERSONNELSANTE_ID", nullable = false, updatable = false) })
+	//@OrderBy("PERSONNELSANTE_NOM ASC")
 	public Set<Dmpcpersonnelsante> getDmpcpersonnelsantes() {
 		return this.dmpcpersonnelsantes;
 	}
@@ -133,6 +134,7 @@ public class Dmpcstructuresante implements java.io.Serializable {
 	@JoinTable(name = "dmpcstructuresante_referent", catalog = "teleconsult", joinColumns = {
 			@JoinColumn(name = "STRUCTURESANTE_ID", nullable = false, updatable = false) }, inverseJoinColumns = {
 					@JoinColumn(name = "PERSONNELSANTE_ID", nullable = false, updatable = false) })
+	//@OrderBy("PERSONNELSANTE_NOM ASC")
 	public Set<Dmpcpersonnelsante> getDmpcpersonnelsantes_1() {
 		return this.dmpcpersonnelsantes_1;
 	}
