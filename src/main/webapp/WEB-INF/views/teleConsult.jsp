@@ -46,7 +46,12 @@
 												Sexe
 											</th>
 											<td>
-												${consultation.dmpcpatient.patientDmpcsexe} 
+												<c:if test="${consultation.dmpcpatient.patientDmpcsexe == 1}">
+													Masculin
+												</c:if>
+												<c:if test="${consultation.dmpcpatient.patientDmpcsexe != 1}">
+													Féminin
+												</c:if>
 											</td>
 										</tr>
 										<tr>
@@ -206,7 +211,15 @@
 														<input type="hidden" name="aviser" value="${aviser}" /> 
 														<input type="hidden" name="resultId" value="${resultId}" />
 														<fieldset>
-															<textarea name="avisRedige"> </textarea>
+															<textarea name="avisRedige" id="avisRedige"></textarea>
+															<c:set var="monAvis" value="${resultId}" /> 
+															<c:forEach var="avis" items="${consultation.avises}"> 					
+																	<c:forEach var="contributeur" items="${avis.contributeurs}"> 
+																		<c:if test="${referent.personnelsanteId == contributeur.dmpcpersonnelsante.personnelsanteId}">								
+																			<c:set var="monAvis" value="${avis.avis}" />  
+																		</c:if>
+																	</c:forEach>																									
+																</c:forEach>
 															<!-- Seul l'avis du référent peut être définitif -->
 															<c:if test="${not empty consulter}">															
 																<br/><br/> <label for="definitif">Rendre cet avis définitif&nbsp;&nbsp;</label><input type="checkbox" name="definitif" value="definitif"/>
@@ -260,5 +273,9 @@
 	https://www.sitepoint.com/build-simple-image-editor-with-css-filters-jquery/
  -->
 <script src="resources/js/editeur.js"></script>
+<c:out value="${monAvis}" />
+<Script>
+	$('#avisRedige').val("${monAvis}"); 																			
+</Script>
 
 </html>

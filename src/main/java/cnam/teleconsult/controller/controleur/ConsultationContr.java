@@ -13,10 +13,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import cnam.teleconsult.modele.bean.Avis;
 import cnam.teleconsult.modele.bean.Consultation;
+import cnam.teleconsult.modele.bean.Contributeur;
+import cnam.teleconsult.modele.bean.ContributeurId;
 import cnam.teleconsult.modele.bean.Dmpcpersonnelsante;
 import cnam.teleconsult.modele.bean.Dmpcstructuresante;
+import cnam.teleconsult.modele.dao.AvisDAO;
 import cnam.teleconsult.modele.dao.ConsultationDAO;
+import cnam.teleconsult.modele.dao.ContributeurDAO;
 import cnam.teleconsult.modele.dao.DmpcpersonnelsanteDAO;
 import cnam.teleconsult.modele.dao.DmpcstructuresanteDAO;
 
@@ -38,6 +43,10 @@ public class ConsultationContr {
     private DmpcpersonnelsanteDAO dmpcpersonnelsanteDAO;
 	@Autowired
 	private ConsultationDAO consultationDAO;
+	@Autowired
+	private AvisDAO avisDAO;
+	@Autowired
+	private ContributeurDAO contributeurDAO;
 
 	/**
 	 * 
@@ -88,7 +97,21 @@ public class ConsultationContr {
 		Dmpcpersonnelsante referent = dmpcpersonnelsanteDAO.get(new Integer(referentChangement));
 		
 		consult.setDmpcpersonnelsante(referent);
+		consultationDAO.saveOrUpdate(consult);		
+		
+		//On crée le nouvel avis à insérer
+		Avis nouvelAvis = new Avis(consult,"");
+		avisDAO.saveOrUpdate(nouvelAvis);
+		
+		ContributeurId contributeurId = new ContributeurId(nouvelAvis.getDmpcsubmissionId(), referent.getPersonnelsanteId());
+		
+		Contributeur contributeur = new Contributeur(contributeurId,nouvelAvis,referent,"");
+		contributeurDAO.saveOrUpdate(contributeur);
+		consult.getAvises().add(nouvelAvis);
+		//On sauve le tout
 		consultationDAO.saveOrUpdate(consult);
+				
+		
 		
 		
 		List<Consultation> consultations= consultationDAO.getListeConsultationHopital(hopital.getStructuresanteId()) ;

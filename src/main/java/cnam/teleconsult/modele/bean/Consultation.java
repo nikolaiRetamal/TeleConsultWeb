@@ -173,7 +173,7 @@ public class Consultation implements java.io.Serializable {
 					
 					//Si on trouve un avis final dans les avis, la consultation est traitée
 					if(avisEnCours.getFlagFinal() != null && avisEnCours.getFlagFinal() > new Integer(0)){
-						result = new Integer(1);	
+						result = new Integer(2);	
 					}
 					
 				}

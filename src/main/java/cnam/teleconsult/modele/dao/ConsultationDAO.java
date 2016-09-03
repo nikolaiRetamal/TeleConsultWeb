@@ -146,7 +146,8 @@ public class ConsultationDAO {
 		 List<Consultation> consultations = (List<Consultation>)sessionFactory.getCurrentSession().createSQLQuery(
 			        "select c.* from consultation c"
 			        + " where CONSULTATION_ID in (select CONSULTATION_ID from avis a, contributeur c  where PERSONNELSANTE_ID = "+referentId
-			        							+ " and a.DMPCSUBMISSION_ID = c.DMPCSUBMISSION_ID	 ) "
+			        							+ " and a.DMPCSUBMISSION_ID = c.DMPCSUBMISSION_ID) 	"
+			        + " and c.PERSONNELSANTE_ID != "+referentId
 			        + " order by c.CONSULTATION_DATE "
 			    )
 			    .addEntity("c", Consultation.class)

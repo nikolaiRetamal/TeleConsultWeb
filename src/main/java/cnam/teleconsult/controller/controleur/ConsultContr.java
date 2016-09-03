@@ -2,6 +2,7 @@ package cnam.teleconsult.controller.controleur;
 
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -100,6 +101,7 @@ public class ConsultContr {
 		}
 						
 		//La liste des confrères affichée est la liste des référents de l'hôpital moins le référent
+		//Moins les référents déjà sollicités
 		List<Dmpcpersonnelsante> confreresTampon = hopital.getListeReferent();
 		ArrayList<Dmpcpersonnelsante> confreres = new ArrayList<Dmpcpersonnelsante>();
 		
@@ -152,7 +154,6 @@ public class ConsultContr {
 		}
 		
 		
-		
 		//On crée le nouvel avis à insérer
 		Avis nouvelAvis = new Avis(consultation,"");
 		avisDAO.saveOrUpdate(nouvelAvis);
@@ -172,6 +173,69 @@ public class ConsultContr {
 		return model;
 		
 	}
+	
+	/***
+	 * 
+	 * Servlet de rédaction d'un avis
+	 * 
+	 * @param request
+	 * @param consulter
+	 * @param resultId
+	 * @return
+	 */
+	@RequestMapping(value = "/redactionAvis")
+	public ModelAndView redactionAvis (HttpServletRequest request, @RequestParam String consulter, @RequestParam String aviser, @RequestParam String resultId){
+
+		
+		ModelAndView model = new ModelAndView("redirect:/afficheConsultation");
+				
+		Consultation consultation = null;
+		Dmpcpersonnelsante referent = (Dmpcpersonnelsante)request.getSession().getAttribute("referent");
+		//On récupère la consultation		
+
+		if(consulter != null && !"".equals(consulter)) {
+			 consultation= consultationDAO.get(new Integer(consulter)) ;			
+		} else {
+			 consultation= consultationDAO.get(new Integer(aviser)) ;
+		}
+
+		String definitif = request.getParameter("definitif");
+		String avisRedige = request.getParameter("avisRedige");
+		
+		System.out.println("Avis rédigé : "+avisRedige);
+		
+		Set<Avis> avises = consultation.getAvises();
+		Iterator<Avis> itAvis = avises.iterator();
+		
+		//On itère sur les avis de la consultation
+		while(itAvis.hasNext()){
+		
+			Avis avisCourant = itAvis.next();
+		   //Si c'est un contributeur il faut encore itérer
+			Set<Contributeur> contributeurs = avisCourant.getContributeurs();
+			Iterator<Contributeur> itContributeur = contributeurs.iterator();
+			
+			while(itContributeur.hasNext()){
+				Contributeur contributeurCourant = itContributeur.next();
+				if(referent.getPersonnelsanteId() == contributeurCourant.getDmpcpersonnelsante().getPersonnelsanteId()){
+					avisCourant.setAvis(avisRedige);
+
+					if(definitif != null){
+						avisCourant.setFlagFinal(1);
+					}
+				}			
+				avisDAO.saveOrUpdate(avisCourant);		
+			}
+		}
+		
+
+		model.addObject("consulter", consulter);
+		model.addObject("aviser", aviser);
+		model.addObject("resultId", resultId);		
+		return model;
+		
+	}
+
 	
 	
 	
