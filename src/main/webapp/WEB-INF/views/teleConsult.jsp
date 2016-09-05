@@ -154,10 +154,10 @@
 										<fieldset>
 											<input type="hidden" name="consulter" value="${consulter}" /> 
 											<input type="hidden" name="aviser" value="${aviser}" /> 
-											<input type="hidden" name="resultId" value="${(resultId+1)}" />
-											<input type="submit" value="Examen suivant"/> 
-											&nbsp;
+											<input type="hidden" name="resultId" value="${(resultId+1)}" />											
 											<a href="${resultat.imagePath}/${resultat.imageNom}" download="${resultat.imageNom}"><input type="button" value="telecharger l'examen"/></a>									
+											&nbsp;
+											<input type="submit" value="Examen suivant"/> 
 										</fieldset> 
 									</form>
 								</div>
