@@ -93,7 +93,7 @@
 							<!-- -----------------					
 							AFFICHAGE DES RESULTATS
 							----------------- -->
-						<div id="formulaire" align="center">
+						<div id="formulaire" align="center"  style="min-width: 1000px;">
 								
 							<h3>
 							<span class="imageHeader">
@@ -101,49 +101,67 @@
 							</span>				
 								${titreResultat}
 							</h3>
-							<fieldset>			
-								<!--Controls for CSS filters via range input-->
-								<div class="sliders">
-									<form id="imageEditor">
-										<p>
-											<label for="gs">Teinte</label>
-											<input id="gs" name="gs" type="range" min=0 max=100 value=0>
-										</p>
+							<fieldset>											
+								<!-- DANS LE CAS DE DONNEES BRUTES -->
+								<c:if test="${not empty resultat.rawData && resultat.rawData != 'NoData'}">
+									
+									
+									<c:set var="rawData" value="${resultat.rawData}" />
+
+									<div id="chart_div"></div>
+									
+								</c:if>
+								<!-- DANS LE CAS D'UNE IMAGE  -->
+								<c:if test="${empty resultat.rawData || resultat.rawData == 'NoData'}">
+								
 										
-										<p>
-											<label for="br">Luminosité</label>
-											<input id="br" name="br" type="range" min=0 max=200 value=100>
-										</p>
-					
-										<p>
-											<label for="ct">Contraste</label>
-											<input id="ct" name="ct" type="range" min=0 max=200 value=100>
-										</p>
-					
-										<p>
-											<label for="invert">Inverser</label>
-											<input id="invert" name="invert" type="range" min=0 max=100 value=0>
-										</p>
-							
-										<input type="reset" form="imageEditor" id="reset" value="Reset" />
-					
-									</form>
-								</div>	
-					
-								<!--container where image will be loaded-->
-								<div id="imageContainer" class="center">
-									<img src="${resultat.imagePath}/${resultat.imageNom} " />
-								</div>
+									<!--Controls for CSS filters via range input-->
+									<div class="sliders">
+										<form id="imageEditor">
+											<p>
+												<label for="gs">Teinte</label>
+												<input id="gs" name="gs" type="range" min=0 max=100 value=0>
+											</p>
+											
+											<p>
+												<label for="br">Luminosité</label>
+												<input id="br" name="br" type="range" min=0 max=200 value=100>
+											</p>
+						
+											<p>
+												<label for="ct">Contraste</label>
+												<input id="ct" name="ct" type="range" min=0 max=200 value=100>
+											</p>
+						
+											<p>
+												<label for="invert">Inverser</label>
+												<input id="invert" name="invert" type="range" min=0 max=100 value=0>
+											</p>
+								
+											<input type="reset" form="imageEditor" id="reset" value="Reset" />
+						
+										</form>
+									</div>	
+						
+									<!--container where image will be loaded-->
+									<div id="imageContainer" class="center">
+										<img src="${resultat.imagePath}/${resultat.imageNom} " />
+									</div>
+																
+								</c:if>
 								<div style="display: block;  margin-left: auto; margin-right: auto">												
 									 <form action="/teleconsult/afficheConsultation" method="POST">
 										<fieldset>
 											<input type="hidden" name="consulter" value="${consulter}" /> 
 											<input type="hidden" name="aviser" value="${aviser}" /> 
 											<input type="hidden" name="resultId" value="${(resultId+1)}" />
-											<input type="submit" value="Examen suivant"/> 									
+											<input type="submit" value="Examen suivant"/> 
+											&nbsp;
+											<a href="${resultat.imagePath}/${resultat.imageNom}" download="${resultat.imageNom}"><input type="button" value="telecharger l'examen"/></a>									
 										</fieldset> 
 									</form>
 								</div>
+							
 							</fieldset>					
 						</div>
 				</td>
@@ -268,14 +286,40 @@
 </body>
 <!-- Imports JS -->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <!-- Editeur d'image réalisé par Vikas Lalwani
 	https://www.sitepoint.com/build-simple-image-editor-with-css-filters-jquery/
  -->
 <script src="resources/js/editeur.js"></script>
-<c:out value="${monAvis}" />
-<Script>
-	$('#avisRedige').val("${monAvis}"); 																			
-</Script>
+<script>
+	$('#avisRedige').val("${monAvis}"); 						
 
+	 google.charts.load('current', {packages: ['corechart', 'line']});
+	 google.charts.setOnLoadCallback(drawBasic);
+
+	 
+	 function drawBasic() {
+
+	       var data = new google.visualization.DataTable();
+	       data.addColumn('number', 'X');
+	       data.addColumn('number', 'Pulse');
+
+	       data.addRows(${rawData});
+
+	       var options = {
+	         hAxis: {
+	           title: 'Time (s)'
+	         },
+	         vAxis: {
+	           title: 'Pulse level'
+	         }
+	       };
+
+	       var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+	       chart.draw(data, options);
+	     }
+</script>			
+														
 </html>

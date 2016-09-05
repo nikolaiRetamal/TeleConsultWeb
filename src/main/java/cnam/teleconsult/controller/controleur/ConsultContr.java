@@ -89,6 +89,7 @@ public class ConsultContr {
 		Resultat resultat = null;
 		ArrayList<Resultat> resultats = new ArrayList<Resultat>();
 		resultats.addAll(consultation.getResultats());
+		
 			
 		
 		//On récupère le paramètre resultId
@@ -112,7 +113,11 @@ public class ConsultContr {
 		}
 		
 		resultat = resultats.get(resultId);
-
+		
+		resultat = formatte(resultat);
+		
+		
+		
 		model.addObject("consultation", consultation);
 		model.addObject("resultat", resultat);
 		model.addObject("consulter", consulter);
@@ -202,8 +207,6 @@ public class ConsultContr {
 		String definitif = request.getParameter("definitif");
 		String avisRedige = request.getParameter("avisRedige");
 		
-		System.out.println("Avis rédigé : "+avisRedige);
-		
 		Set<Avis> avises = consultation.getAvises();
 		Iterator<Avis> itAvis = avises.iterator();
 		
@@ -236,6 +239,39 @@ public class ConsultContr {
 		
 	}
 
+	/**
+	 * 
+	 * Fonction de mise en forme des différents résultats
+	 * - Actuellement : mets en forme le rythme cardiaque pour affichage Google Chart
+	 * 
+	 * @param resultat
+	 * @return
+	 */
+	private Resultat formatte (Resultat resultat){
+		
+		String rawData = resultat.getRawData() ;
+		
+		if(rawData!= null && !"NoData".equals(rawData)){
+			//On récupère les pulsations
+			rawData = rawData.replace("[", "").replace("]", "");
+			String[] data = rawData.split(",");
+			
+			String newData = "[";
+			int time=0;
+			
+			for(String s:data){
+				newData+="["+time+","+s.trim()+"],";
+				time++;
+			}			
+			newData+="]";
+
+			resultat.setRawData(newData);
+		}
+		
+		
+		return resultat;
+	}
+	
 	
 	
 	

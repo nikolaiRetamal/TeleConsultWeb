@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -195,7 +196,7 @@ public class Consultation implements java.io.Serializable {
 	@Transient
 	public String getConsultationDateLisible(){
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("EEEE dd MMMM yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("EEEE dd MMMM yyyy",Locale.FRENCH);
 		String dateLisible = sdf.format(getConsultationDate()); 
 		
 		return dateLisible;
