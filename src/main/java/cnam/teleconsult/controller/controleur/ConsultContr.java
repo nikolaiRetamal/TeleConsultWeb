@@ -112,19 +112,27 @@ public class ConsultContr {
 			}
 		}
 		
-		resultat = resultats.get(resultId);
-		
-		resultat = formatte(resultat);
+		if(!resultats.isEmpty()){
+
+			resultat = resultats.get(resultId);
+			
+			resultat = formatte(resultat);
+			
+			model.addObject("resultat", resultat);
+			model.addObject("titreResultat", "Examen "+(resultId+1)+"/"+resultats.size()+" : "+resultat.getExamen().getExamenNom());	
+			
+		}else{
+
+			model.addObject("titreResultat", "Pas d'examen attaché à cette consultation.");	
+		}
 		
 		
 		
 		model.addObject("consultation", consultation);
-		model.addObject("resultat", resultat);
 		model.addObject("consulter", consulter);
 		model.addObject("aviser", aviser);
 		model.addObject("confreres", confreres);
-		model.addObject("resultId", resultId);
-		model.addObject("titreResultat", "Examen "+(resultId+1)+"/"+resultats.size()+" : "+resultat.getExamen().getExamenNom());		
+		model.addObject("resultId", resultId);	
 		model.addObject("title", "Consultation" );
 		model.addObject("titrePage", patient.getPatientNom()+" "+patient.getPatientPrenom()+" - "+consultation.getConsultationDateLisible() );
 		
